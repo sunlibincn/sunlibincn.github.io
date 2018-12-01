@@ -160,6 +160,7 @@
       
         <p><a href="https://www.jianshu.com/p/cb0750324e26" target="_blank" rel="noopener">使用Hexo搭建GitHub博客（2018年Mac版）</a></p>
 <p><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a></p>
+<p>搞了一天，终于搞好了</p>
 
       
 
@@ -443,6 +444,76 @@
 
 
   
+    <article id="post-TCP的三次握手" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/TCP的三次握手/">TCP的三次握手</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/TCP的三次握手/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致</p>
+<p>因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任</p>
+<p>我理解的不多，这次只说说三次握手</p>
+<p>什么是三次握手呢，我举个特别简单的例子</p>
+<p>这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地瓜马上要接着说『宝塔镇河妖』，一言不合拖裤子亮枪</p>
+<p>TCP的握手也有黑话，就是falg标志『SYN』和『ACK』，我带着数据和SYN请求你（第一次），你看到时候不会立即处理，要传回给我数据和SYN同时加上你的ACK（第二次），我收到了数据、SYN、ACK三样一样不差，我拿出我的SYN，只带着数据和你的ACK再请求你（第三次）这时候你才开始接受数据，这就是三次握手</p>
+<p>如果说这三次握手中有其中一个环节对不上，这买卖不做了，我重来，直到黑话都对了为止</p>
+<p>说的有点粗糙，理解的也有点浅，凑活看看吧</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/TCP的三次握手/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-位运算的权限实践" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -518,76 +589,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/01/位运算的权限实践/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-TCP的三次握手" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/TCP的三次握手/">TCP的三次握手</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/01/TCP的三次握手/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致</p>
-<p>因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任</p>
-<p>我理解的不多，这次只说说三次握手</p>
-<p>什么是三次握手呢，我举个特别简单的例子</p>
-<p>这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地瓜马上要接着说『宝塔镇河妖』，一言不合拖裤子亮枪</p>
-<p>TCP的握手也有黑话，就是falg标志『SYN』和『ACK』，我带着数据和SYN请求你（第一次），你看到时候不会立即处理，要传回给我数据和SYN同时加上你的ACK（第二次），我收到了数据、SYN、ACK三样一样不差，我拿出我的SYN，只带着数据和你的ACK再请求你（第三次）这时候你才开始接受数据，这就是三次握手</p>
-<p>如果说这三次握手中有其中一个环节对不上，这买卖不做了，我重来，直到黑话都对了为止</p>
-<p>说的有点粗糙，理解的也有点浅，凑活看看吧</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/TCP的三次握手/">展开全文 >></a>
         </p>
       
 
