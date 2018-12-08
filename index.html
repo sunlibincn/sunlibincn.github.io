@@ -47,7 +47,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://thumbnail0.baidupcs.com/thumbnail/2611946cd3671a531037f214d77e21c7?fid=877034584-250528-565260969304257&amp;time=1543597200&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ZPesrW%2FbLqeVWZm4iPwcgahmsNc%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=7747645563061321666&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" class="js-avatar">
+			<img src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/touxiang_20181201_0115.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">sunlibincn</a></h1>
@@ -97,7 +97,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://thumbnail0.baidupcs.com/thumbnail/2611946cd3671a531037f214d77e21c7?fid=877034584-250528-565260969304257&amp;time=1543597200&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ZPesrW%2FbLqeVWZm4iPwcgahmsNc%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=7747645563061321666&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" class="js-avatar">
+				<img src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/touxiang_20181201_0115.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">sunlibincn</h1>
@@ -273,19 +273,19 @@
 
 
   
-    <article id="post-密码正则 - JAVA版本" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-一个面试题 &amp;&amp;、&amp;和||、|" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/密码正则 - JAVA版本/">密码正则 - JAVA版本</a>
+      <a class="article-title" href="/2018/12/01/一个面试题 &&、&和||、|/">一个面试题 &amp;&amp;、&amp;和||、|</a>
     </h1>
   
 
         
-        <a href="/2018/12/01/密码正则 - JAVA版本/" class="archive-article-date">
+        <a href="/2018/12/01/一个面试题 &&、&和||、|/" class="archive-article-date">
   	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
@@ -293,9 +293,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>直接看代码  不废话</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String newPwd = controller.getPara(<span class="string">"newPassword"</span>);</span><br><span class="line"><span class="comment">// 判断密码是否包含数字：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> i = newPwd.matches(<span class="string">".*\\d+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码是否包含字母：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> j = newPwd.matches(<span class="string">".*[a-zA-Z]+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码是否包含特殊符号(~!@#$%^&amp;*()_+|&lt;&gt;,.?/:;'[]&#123;&#125;\)：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> k = newPwd.matches(<span class="string">".*[~!@#$%^&amp;*()_+|&lt;&gt;,.?/:;\\[\\]&#123;&#125;]+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码长度是否在6-16位</span></span><br><span class="line"><span class="keyword">int</span> l = newPwd.length();</span><br><span class="line"><span class="comment">// 判断密码中是否包含用户名</span></span><br><span class="line"><span class="keyword">boolean</span> contains = newPwd.contains(user);</span><br><span class="line"><span class="keyword">if</span> (i + j + k &lt; <span class="number">2</span> || l &lt; <span class="number">6</span> || l &gt; <span class="number">16</span> || contains) &#123;</span><br><span class="line">    addError(ERROR_MSG, <span class="string">"密码格式错误，不能包含用户名，长度 6-16 位，必须包括字母、数字、特殊符号(单、双引号除外)"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>转载自：<a href="http://www.cnblogs.com/goodcheap/p/6051833.html" target="_blank" rel="noopener">http://www.cnblogs.com/goodcheap/p/6051833.html</a></p>
+        <p><font color="red">简单，但是比较重要</font></p>
+<p><font color="red">首先</font>，这4个运算符都是表示逻辑运算<br>-逻辑 与 (全部为 true 才返回 true)</p>
+<pre><code>- &amp;&amp; （短路模式）多个条件下，执行过程中如果有一个条件判断出现false，之后的条件都不会再判断，直接返回false
+- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个false，就返回false
+</code></pre><p>-逻辑 或 (只要有一个为 true 就返回 true)</p>
+<pre><code>- 【||】 （短路模式）多个条件下，执行过程中如果有一个条件判断出现true，之后的条件都不会再判断，直接返回true
+- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个true，就返回true
+</code></pre><p><font color="red">这里有一个系统性能的问题，短路与和短路或会相对节省一点点开销</font></p>
+<p><font color="red">其次</font>，&amp; 和 | 还可以进行位运算</p>
+<ul>
+<li>位 与 （有一个0就是0）<ul>
+<li>&amp; 按位与运算，两个数据位比较，如果有一个是0，结果就是0，全为1时，结果才是1</li>
+</ul>
+</li>
+<li>位 或 （有一个1就是1）<ul>
+<li>『|』 按位或运算，两个数据位比较，如果有一个是1，结果就是1</li>
+</ul>
+</li>
+</ul>
+<p>位运算资料：<a href="http://blog.csdn.net/xiaochunyong/article/details/7748713" target="_blank" rel="noopener">http://blog.csdn.net/xiaochunyong/article/details/7748713</a></p>
 
       
 
@@ -308,7 +325,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/密码正则 - JAVA版本/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/01/一个面试题 &&、&和||、|/">展开全文 >></a>
         </p>
       
 
@@ -584,6 +601,71 @@
 
 
   
+    <article id="post-密码正则 - JAVA版本" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/密码正则 - JAVA版本/">密码正则 - JAVA版本</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/密码正则 - JAVA版本/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>直接看代码  不废话</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String newPwd = controller.getPara(<span class="string">"newPassword"</span>);</span><br><span class="line"><span class="comment">// 判断密码是否包含数字：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> i = newPwd.matches(<span class="string">".*\\d+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码是否包含字母：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> j = newPwd.matches(<span class="string">".*[a-zA-Z]+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码是否包含特殊符号(~!@#$%^&amp;*()_+|&lt;&gt;,.?/:;'[]&#123;&#125;\)：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> k = newPwd.matches(<span class="string">".*[~!@#$%^&amp;*()_+|&lt;&gt;,.?/:;\\[\\]&#123;&#125;]+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码长度是否在6-16位</span></span><br><span class="line"><span class="keyword">int</span> l = newPwd.length();</span><br><span class="line"><span class="comment">// 判断密码中是否包含用户名</span></span><br><span class="line"><span class="keyword">boolean</span> contains = newPwd.contains(user);</span><br><span class="line"><span class="keyword">if</span> (i + j + k &lt; <span class="number">2</span> || l &lt; <span class="number">6</span> || l &gt; <span class="number">16</span> || contains) &#123;</span><br><span class="line">    addError(ERROR_MSG, <span class="string">"密码格式错误，不能包含用户名，长度 6-16 位，必须包括字母、数字、特殊符号(单、双引号除外)"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转载自：<a href="http://www.cnblogs.com/goodcheap/p/6051833.html" target="_blank" rel="noopener">http://www.cnblogs.com/goodcheap/p/6051833.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/密码正则 - JAVA版本/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-位运算的权限实践" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -688,153 +770,6 @@
 
 
   
-    <article id="post-一个面试题 &amp;&amp;、&amp;和||、|" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/一个面试题 &&、&和||、|/">一个面试题 &amp;&amp;、&amp;和||、|</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/01/一个面试题 &&、&和||、|/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="red">简单，但是比较重要</font></p>
-<p><font color="red">首先</font>，这4个运算符都是表示逻辑运算<br>-逻辑 与 (全部为 true 才返回 true)</p>
-<pre><code>- &amp;&amp; （短路模式）多个条件下，执行过程中如果有一个条件判断出现false，之后的条件都不会再判断，直接返回false
-- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个false，就返回false
-</code></pre><p>-逻辑 或 (只要有一个为 true 就返回 true)</p>
-<pre><code>- 【||】 （短路模式）多个条件下，执行过程中如果有一个条件判断出现true，之后的条件都不会再判断，直接返回true
-- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个true，就返回true
-</code></pre><p><font color="red">这里有一个系统性能的问题，短路与和短路或会相对节省一点点开销</font></p>
-<p><font color="red">其次</font>，&amp; 和 | 还可以进行位运算</p>
-<ul>
-<li>位 与 （有一个0就是0）<ul>
-<li>&amp; 按位与运算，两个数据位比较，如果有一个是0，结果就是0，全为1时，结果才是1</li>
-</ul>
-</li>
-<li>位 或 （有一个1就是1）<ul>
-<li>『|』 按位或运算，两个数据位比较，如果有一个是1，结果就是1</li>
-</ul>
-</li>
-</ul>
-<p>位运算资料：<a href="http://blog.csdn.net/xiaochunyong/article/details/7748713" target="_blank" rel="noopener">http://blog.csdn.net/xiaochunyong/article/details/7748713</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/一个面试题 &&、&和||、|/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Junit Test" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/Junit Test/">Junit Test</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/01/Junit Test/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>看到今天有个新同事写完代码做测试，又把原来的博客翻出来，转到github吧</p>
-<p>不废话，直接上代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JunitTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须非静态，测试用例之前执行，用注解 @Before"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须静态， 测试用例之前执行，比如连接数据库，用注解 @BeforeClass"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须非静态，测试用例之后执行，用注解 @After"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterClass</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须静态，测试用例之后执行，比如断开数据库连接，用注解 @AfterClass"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"***  这是第一个Junit测试  ***"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        注意，这里的断言在引包的时候一定是static的 import static org.junit.Assert.*; 断言		   失败将在Junit测试窗口中终止测试</span></span><br><span class="line"><span class="comment">        断言有很多，assert开头的方法</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        assertEquals(<span class="string">"1"</span>, <span class="string">"1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Ignore</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    注意 这里使用了 @Ignore 注解，在测试这个类的时候 test2() 将跳过测试</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"***  这是第二个Junit测试  ***"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/Junit Test/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-html页面指定区域打印\生成图片" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -879,6 +814,74 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/01/html页面指定区域打印\生成图片/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-List删除指定元素的坑" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/List删除指定元素的坑/">List删除指定元素的坑</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/List删除指定元素的坑/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在日常摞代码的时候，难免会遇到要从集合中删除某个元素的需求，相信在这个破需求下摔的鼻青脸肿的猿不是少数</p>
+<p>ConcurrentModificationException错误</p>
+<p>UnsupportedOperationException错误</p>
+<p>具体原因有很多大神分析了，我再说也没有大神说的清除，这里就只放出解决方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">String[] arr = &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意下下面这条代码，如果从数组转到list直接去迭代删除的话会报错，你可以试试</span></span><br><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(asList(arr));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一种安全删除写法</span></span><br><span class="line">Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Objects.equals(it.next(), <span class="string">"a"</span>)) &#123;</span><br><span class="line">        it.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种安全删除写法，比较有逼格的,java8新特性 Lambda</span></span><br><span class="line">list.removeIf(Predicate.isEqual(<span class="string">"a"</span>));</span><br></pre></td></tr></table></figure>
+<p>最烦人的最坑的就是从数组转到list然后删除，摔过的人都知道</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/List删除指定元素的坑/">展开全文 >></a>
         </p>
       
 
