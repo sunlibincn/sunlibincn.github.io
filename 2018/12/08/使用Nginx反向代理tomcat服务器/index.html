@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
-  <title>TCP的三次握手 | sunlibin.cn 的博客</title>
+  <title>使用Nginx反向代理tomcat服务器 | sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致 因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任 我理解的不多，这次只说说三次握手 什么是三次握手呢，我举个特别简单的例子 这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地">
+  <meta name="description" content="首先看下nginx安装目录conf中配置文件：nginx.conf 1234567891011121314worker_processes  1;events &amp;#123;    worker_connections  1024;&amp;#125;http &amp;#123;    include       mime.types;    default_type  application/octet-str">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCP的三次握手">
-<meta property="og:url" content="https://sunlibincn.github.io/2018/12/01/TCP的三次握手/index.html">
+<meta property="og:title" content="使用Nginx反向代理tomcat服务器">
+<meta property="og:url" content="https://sunlibincn.github.io/2018/12/08/使用Nginx反向代理tomcat服务器/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致 因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任 我理解的不多，这次只说说三次握手 什么是三次握手呢，我举个特别简单的例子 这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地">
+<meta property="og:description" content="首先看下nginx安装目录conf中配置文件：nginx.conf 1234567891011121314worker_processes  1;events &amp;#123;    worker_connections  1024;&amp;#125;http &amp;#123;    include       mime.types;    default_type  application/octet-str">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-01T05:16:33.324Z">
+<meta property="og:updated_time" content="2018-12-08T05:39:49.276Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TCP的三次握手">
-<meta name="twitter:description" content="TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致 因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任 我理解的不多，这次只说说三次握手 什么是三次握手呢，我举个特别简单的例子 这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地">
+<meta name="twitter:title" content="使用Nginx反向代理tomcat服务器">
+<meta name="twitter:description" content="首先看下nginx安装目录conf中配置文件：nginx.conf 1234567891011121314worker_processes  1;events &amp;#123;    worker_connections  1024;&amp;#125;http &amp;#123;    include       mime.types;    default_type  application/octet-str">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -137,34 +137,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-TCP的三次握手" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-使用Nginx反向代理tomcat服务器" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      TCP的三次握手
+      使用Nginx反向代理tomcat服务器
     </h1>
   
 
         
-        <a href="/2018/12/01/TCP的三次握手/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+        <a href="/2018/12/08/使用Nginx反向代理tomcat服务器/" class="archive-article-date">
+  	<time datetime="2018-12-08T05:23:18.831Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致</p>
-<p>因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任</p>
-<p>我理解的不多，这次只说说三次握手</p>
-<p>什么是三次握手呢，我举个特别简单的例子</p>
-<p>这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地瓜马上要接着说『宝塔镇河妖』，一言不合拖裤子亮枪</p>
-<p>TCP的握手也有黑话，就是falg标志『SYN』和『ACK』，我带着数据和SYN请求你（第一次），你看到时候不会立即处理，要传回给我数据和SYN同时加上你的ACK（第二次），我收到了数据、SYN、ACK三样一样不差，我拿出我的SYN，只带着数据和你的ACK再请求你（第三次）这时候你才开始接受数据，这就是三次握手</p>
-<p>如果说这三次握手中有其中一个环节对不上，这买卖不做了，我重来，直到黑话都对了为止</p>
-<p>说的有点粗糙，理解的也有点浅，凑活看看吧</p>
+        <p>首先看下nginx安装目录conf中配置文件：nginx.conf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    include /usr/<span class="built_in">local</span>/nginx/conf/extra/*.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>conf目录同级目录中创建文件夹extra，保存nginx的其他模块信息<br>进入extra，创建一个模块配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> extra</span><br><span class="line">vi demo.conf</span><br></pre></td></tr></table></figure>
+<p>demo.conf文件内容见下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#负载均衡配置，这里可以添加多个server，weight为权重，如果添加多个，注意分布式session的处理</span></span><br><span class="line">upstream demo &#123;</span><br><span class="line">        server localhost:8080 weight=1;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name  demo.cn;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://demo;   <span class="comment">#来自jsp请求交给tomcat处理</span></span><br><span class="line">        proxy_redirect off;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;    <span class="comment">#后端的Web服务器可以通过X-Forwarded-For&gt;获取用户真实IP</span></span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        client_max_body_size 10m;   <span class="comment">#允许客户端请求的最大单文件字节数</span></span><br><span class="line">        client_body_buffer_size 128k; <span class="comment">#缓冲区代理缓冲用户端请求的最大字节数</span></span><br><span class="line">        proxy_connect_timeout 90;   <span class="comment">#nginx跟后端服务器连接超时时间(代理连接超时)</span></span><br><span class="line">        proxy_read_timeout 90;      <span class="comment">#连接成功后，后端服务器响应时间(代理接收超时)</span></span><br><span class="line">        proxy_buffer_size 4k;       <span class="comment">#设置代理服务器（nginx）保存用户头信息的缓冲区大小</span></span><br><span class="line">        proxy_buffers 6 32k;        <span class="comment">#proxy_buffers缓冲区，网页平均在32k以下的话&gt;，这样设置</span></span><br><span class="line">        proxy_busy_buffers_size 64k; <span class="comment">#高负荷下缓冲大小（proxy_buffers*2）</span></span><br><span class="line">        proxy_temp_file_write_size 64k; <span class="comment">#设定缓存文件夹大小，大于这个值，将从upstream服务器传</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完成以上配置Nginx反向代理也就完成了,检查配置文件（sbin/nginx -t），重载（sbin/nginx -s reload）</p>
+<p>致敬作者：<a href="https://blog.csdn.net/u012476983/article/details/54095446" target="_blank" rel="noopener">https://blog.csdn.net/u012476983/article/details/54095446</a></p>
 
       
 
@@ -254,7 +254,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2018/12/01/TCP的三次握手/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2018/12/08/使用Nginx反向代理tomcat服务器/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -268,18 +268,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/01/RESTful 重新理解一下/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          RESTful 重新理解一下
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/01/设计模式 总结，内附各详解地址/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式 总结，内附各详解地址</div>
+    <a href="/2018/12/01/Hexo + GitHub pages/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo + GitHub pages</div>
       <i class="icon-circle-right"></i>
     </a>
   
