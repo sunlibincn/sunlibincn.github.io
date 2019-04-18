@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
-  <title>Hexo + GitHub pages | sunlibin.cn 的博客</title>
+  <title>sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用Hexo搭建GitHub博客（2018年Mac版） yilia 常用的命令： 生成网站：hexo g 启动本地服务器：hexo s 发布：hexo d 生成的同时发布：hexo g -d 搞了一天，终于搞好了">
+  <meta name="description" content="输入流遇到的坑code1：123456789private static void method1() &amp;#123;    try (FileOutputStream fileOutputStream = new FileOutputStream(&quot;demo.txt&quot;, true)) &amp;#123;        for (int i = 0; i &amp;lt; 10; i++) &amp;#123;">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo + GitHub pages">
-<meta property="og:url" content="https://sunlibincn.github.io/2018/12/01/Hexo + GitHub pages/index.html">
+<meta property="og:title" content="sunlibin.cn 的博客">
+<meta property="og:url" content="https://sunlibincn.github.io/2019/04/18/输入流遇到的坑/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="使用Hexo搭建GitHub博客（2018年Mac版） yilia 常用的命令： 生成网站：hexo g 启动本地服务器：hexo s 发布：hexo d 生成的同时发布：hexo g -d 搞了一天，终于搞好了">
+<meta property="og:description" content="输入流遇到的坑code1：123456789private static void method1() &amp;#123;    try (FileOutputStream fileOutputStream = new FileOutputStream(&quot;demo.txt&quot;, true)) &amp;#123;        for (int i = 0; i &amp;lt; 10; i++) &amp;#123;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T07:06:33.792Z">
+<meta property="og:updated_time" content="2019-04-18T07:02:56.461Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo + GitHub pages">
-<meta name="twitter:description" content="使用Hexo搭建GitHub博客（2018年Mac版） yilia 常用的命令： 生成网站：hexo g 启动本地服务器：hexo s 发布：hexo d 生成的同时发布：hexo g -d 搞了一天，终于搞好了">
+<meta name="twitter:title" content="sunlibin.cn 的博客">
+<meta name="twitter:description" content="输入流遇到的坑code1：123456789private static void method1() &amp;#123;    try (FileOutputStream fileOutputStream = new FileOutputStream(&quot;demo.txt&quot;, true)) &amp;#123;        for (int i = 0; i &amp;lt; 10; i++) &amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -137,35 +137,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hexo + GitHub pages" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-输入流遇到的坑" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Hexo + GitHub pages
-    </h1>
-  
-
-        
-        <a href="/2018/12/01/Hexo + GitHub pages/" class="archive-article-date">
-  	<time datetime="2018-11-30T17:44:29.556Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://www.jianshu.com/p/cb0750324e26" target="_blank" rel="noopener">使用Hexo搭建GitHub博客（2018年Mac版）</a></p>
-<p><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a></p>
-<p>常用的命令：</p>
-<p>生成网站：hexo g</p>
-<p>启动本地服务器：hexo s</p>
-<p>发布：hexo d</p>
-<p>生成的同时发布：hexo g -d</p>
-<p>搞了一天，终于搞好了</p>
-
+        <hr>
+<h2 id="输入流遇到的坑"><a href="#输入流遇到的坑" class="headerlink" title="输入流遇到的坑"></a>输入流遇到的坑</h2><p>code1：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"demo.txt"</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            fileOutputStream.write((<span class="string">"java"</span> + i + <span class="string">"\n"</span>).getBytes());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>code2：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (FileWriter fileWriter = <span class="keyword">new</span> FileWriter(<span class="string">"demo.txt"</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            fileWriter.write(<span class="string">"xxx"</span> + i + <span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先，这两个方法都可以正确执行，java8的新特性，在try后面跟个括号，括号里的声明的流（以上code1是字节流  code2是字符流）在代码执行完成后是可以自动关闭流的</p>
+<p>再看下面三个代码：</p>
+<p>code1：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">    String filePath = <span class="string">"score.txt"</span>;</span><br><span class="line">    <span class="keyword">try</span> (FileInputStream fileInputStream = <span class="keyword">new</span> FileInputStream(filePath)) &#123;</span><br><span class="line">        properties.load(fileInputStream);</span><br><span class="line">        <span class="keyword">if</span> (properties.containsKey(<span class="string">"lisi"</span>)) &#123;</span><br><span class="line">            properties.setProperty(<span class="string">"lisi"</span>, <span class="string">"xxx"</span>);</span><br><span class="line">            properties.store(<span class="keyword">new</span> FileWriter(filePath), <span class="string">"ceshi"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>code2：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String filePath = <span class="string">"score.txt"</span>;</span><br><span class="line">    <span class="keyword">try</span> (FileWriter fileWriter = <span class="keyword">new</span> FileWriter(filePath)) &#123;</span><br><span class="line">        Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">        properties.load(<span class="keyword">new</span> FileReader(filePath));</span><br><span class="line">        <span class="keyword">if</span> (properties.containsKey(<span class="string">"lisi"</span>)) &#123;</span><br><span class="line">            properties.setProperty(<span class="string">"lisi"</span>, <span class="string">"xxx"</span>);</span><br><span class="line">            Set&lt;String&gt; propertyNames = properties.stringPropertyNames();</span><br><span class="line">            <span class="keyword">for</span> (String propertyName : propertyNames) &#123;</span><br><span class="line">                fileWriter.write(propertyName + <span class="string">"="</span> + properties.getProperty(propertyName) + <span class="string">"\r"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>code3：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String filePath = <span class="string">"score.txt"</span>;</span><br><span class="line">    FileWriter fileWriter = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">        properties.load(<span class="keyword">new</span> FileReader(filePath));</span><br><span class="line">        <span class="keyword">if</span> (properties.containsKey(<span class="string">"lisi"</span>)) &#123;</span><br><span class="line">            properties.setProperty(<span class="string">"lisi"</span>, <span class="string">"xxx"</span>);</span><br><span class="line">            Set&lt;String&gt; propertyNames = properties.stringPropertyNames();</span><br><span class="line">            fileWriter = <span class="keyword">new</span> FileWriter(filePath);</span><br><span class="line">            <span class="keyword">for</span> (String propertyName : propertyNames) &#123;</span><br><span class="line">                fileWriter.write(propertyName + <span class="string">"="</span> + properties.getProperty(propertyName) + <span class="string">"\r"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fileWriter.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上三个代码都要实现同样一个功能，读score.txt，检查如果有一个key是lisi，就把这个属性值改成xxx<br>那么问题来了，code1、code3可以正常完成工作，但是code2就不行，这代码看着很奇怪，但其实是个很简单的概念性问题</p>
+<font color="red">关键点：FileWriter fileWriter = new FileWriter(filePath)，在没有给到true追加的时候，执行这行代码，其实文件就已经被清空了，后面自然读不到任何内容，如果code2的代码改成：FileWriter fileWriter = new FileWriter(filePath， true) 就不会有任何问题了</font>
       
 
       
@@ -254,7 +240,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2018/12/01/Hexo + GitHub pages/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2019/04/18/输入流遇到的坑/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -268,18 +254,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/08/使用Nginx反向代理tomcat服务器/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/18/equals 和 ==/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          使用Nginx反向代理tomcat服务器
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2018/12/01/设计模式 总结，内附各详解地址/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式 总结，内附各详解地址</div>
+    <a href="/2019/04/18/日常开发小技巧-持续更新/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -306,7 +292,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#输入流遇到的坑"><span class="toc-number">1.</span> <span class="toc-text">输入流遇到的坑</span></a></li></ol>
                     </div>
                 </span>
             </div>

@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
-  <title>并发和并行的概念 | sunlibin.cn 的博客</title>
+  <title>并发和并行的概念 \ 进程和线程的概念以及联系 | sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="并发：例如：在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭 理解：在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行 并行：例如：在吃饭，有电话进来，拿起电话一边吃饭一边讲电话 理解：在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行 重点在于：并行是同步，并发是交替 巨人的肩膀：https:/">
+  <meta name="description" content="并发：例如：在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭 理解：在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行 并行：例如：在吃饭，有电话进来，拿起电话一边吃饭一边讲电话 理解：在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行 重点在于：并行是同步，并发是交替 进程指正在运行的程序。确切">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="并发和并行的概念">
+<meta property="og:title" content="并发和并行的概念 \ 进程和线程的概念以及联系">
 <meta property="og:url" content="https://sunlibincn.github.io/2019/04/18/并发和并行的概念/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="并发：例如：在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭 理解：在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行 并行：例如：在吃饭，有电话进来，拿起电话一边吃饭一边讲电话 理解：在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行 重点在于：并行是同步，并发是交替 巨人的肩膀：https:/">
+<meta property="og:description" content="并发：例如：在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭 理解：在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行 并行：例如：在吃饭，有电话进来，拿起电话一边吃饭一边讲电话 理解：在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行 重点在于：并行是同步，并发是交替 进程指正在运行的程序。确切">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T06:51:16.769Z">
+<meta property="og:updated_time" content="2019-04-18T06:56:34.575Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="并发和并行的概念">
-<meta name="twitter:description" content="并发：例如：在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭 理解：在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行 并行：例如：在吃饭，有电话进来，拿起电话一边吃饭一边讲电话 理解：在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行 重点在于：并行是同步，并发是交替 巨人的肩膀：https:/">
+<meta name="twitter:title" content="并发和并行的概念 \ 进程和线程的概念以及联系">
+<meta name="twitter:description" content="并发：例如：在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭 理解：在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行 并行：例如：在吃饭，有电话进来，拿起电话一边吃饭一边讲电话 理解：在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行 重点在于：并行是同步，并发是交替 进程指正在运行的程序。确切">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -144,7 +144,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      并发和并行的概念
+      并发和并行的概念 \ 进程和线程的概念以及联系
     </h1>
   
 
@@ -162,7 +162,10 @@
 <h1 id="并行："><a href="#并行：" class="headerlink" title="并行："></a>并行：</h1><h3 id="例如：-1"><a href="#例如：-1" class="headerlink" title="例如："></a>例如：</h3><p>在吃饭，有电话进来，拿起电话一边吃饭一边讲电话</p>
 <h3 id="理解：-1"><a href="#理解：-1" class="headerlink" title="理解："></a>理解：</h3><p>在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行</p>
 <pre><code>重点在于：并行是同步，并发是交替
-</code></pre><p>巨人的肩膀：<a href="https://blog.csdn.net/qq_27825451/article/details/78850336" target="_blank" rel="noopener">https://blog.csdn.net/qq_27825451/article/details/78850336</a></p>
+</code></pre><h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。</p>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一个程序运行后至少有一个进程，一个进程中可以包含多个线程,但一个进程中至少包含一个线程。比如使用迅雷软件下载网络文件时，同时下载多个文件，就使用到了多线程下载。</span><br></pre></td></tr></table></figure>
+<p>巨人的肩膀：<a href="https://blog.csdn.net/qq_27825451/article/details/78850336" target="_blank" rel="noopener">https://blog.csdn.net/qq_27825451/article/details/78850336</a></p>
 
       
 
@@ -266,6 +269,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/04/18/日常开发小技巧-持续更新/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/12/08/使用Nginx反向代理tomcat服务器/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">使用Nginx反向代理tomcat服务器</div>
@@ -295,7 +307,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#并发："><span class="toc-number">1.</span> <span class="toc-text">并发：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例如："><span class="toc-number">1.0.1.</span> <span class="toc-text">例如：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解："><span class="toc-number">1.0.2.</span> <span class="toc-text">理解：</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#并行："><span class="toc-number">2.</span> <span class="toc-text">并行：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例如：-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">例如：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解：-1"><span class="toc-number">2.0.2.</span> <span class="toc-text">理解：</span></a></li></ol></li>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#并发："><span class="toc-number">1.</span> <span class="toc-text">并发：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例如："><span class="toc-number">1.0.1.</span> <span class="toc-text">例如：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解："><span class="toc-number">1.0.2.</span> <span class="toc-text">理解：</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#并行："><span class="toc-number">2.</span> <span class="toc-text">并行：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例如：-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">例如：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解：-1"><span class="toc-number">2.0.2.</span> <span class="toc-text">理解：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程"><span class="toc-number">3.</span> <span class="toc-text">进程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程"><span class="toc-number">4.</span> <span class="toc-text">线程</span></a></li>
                     </div>
                 </span>
             </div>

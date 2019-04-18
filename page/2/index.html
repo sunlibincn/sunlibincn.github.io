@@ -138,6 +138,294 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-TCP的三次握手" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/TCP的三次握手/">TCP的三次握手</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/TCP的三次握手/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致</p>
+<p>因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任</p>
+<p>我理解的不多，这次只说说三次握手</p>
+<p>什么是三次握手呢，我举个特别简单的例子</p>
+<p>这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地瓜马上要接着说『宝塔镇河妖』，一言不合拖裤子亮枪</p>
+<p>TCP的握手也有黑话，就是falg标志『SYN』和『ACK』，我带着数据和SYN请求你（第一次），你看到时候不会立即处理，要传回给我数据和SYN同时加上你的ACK（第二次），我收到了数据、SYN、ACK三样一样不差，我拿出我的SYN，只带着数据和你的ACK再请求你（第三次）这时候你才开始接受数据，这就是三次握手</p>
+<p>如果说这三次握手中有其中一个环节对不上，这买卖不做了，我重来，直到黑话都对了为止</p>
+<p>说的有点粗糙，理解的也有点浅，凑活看看吧</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/TCP的三次握手/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-RESTful 重新理解一下" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/RESTful 重新理解一下/">RESTful 重新理解一下</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/RESTful 重新理解一下/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因为半年前的一个项目，现在需要新接入一家服务机构，这个项目接的所有机构一直是写webService，忽然这个行业里的奇葩企业偏偏就不用wevService，这里我要说，你干的好，真的好。</p>
+<p>这公司给了一个非常清楚，看着非常舒服的API文档，在文档刚开始，距离目录不远的地方有几个字，看到之后我一下子感觉这次的接入应该会很愉快，『我们提供RESTful访问』</p>
+<p>然后接着看了几个重要的接口，出现了一个疑问，他们理解的REST和我理解的REST是一个么？</p>
+<p>这不是说人家怎么样，是我的错，我之前的想法很简单，就是我请求你，你给我返回一个json就完事了呗，然后，请忽略我这个脑子，至此，我发现我没有脑子</p>
+<p>重点来了，我去查了好多资料，什么是REST什么是RESTful，看的我是云里雾里，感觉以前写的接口都TM是假的，偶然间，在知乎看到一个答案，霍然开朗</p>
+<p>这么说的</p>
+<ul>
+<li>REST描述的是在网络中client和server的一种交互形式；</li>
+<li>Server提供的RESTful API中，URL中只使用名词来指定资源，原则上不使用动词；</li>
+<li>用HTTP协议里的动词来实现资源的添加，修改，删除等操作；<ul>
+<li>GET    用来获取资源</li>
+<li>POST  用来新建资源（也可以用于更新资源）</li>
+<li>PUT    用来更新资源</li>
+<li>DELETE  用来删除资源</li>
+</ul>
+</li>
+<li>Server和Client之间传递某资源的一个表现形式，比如用JSON，XML传输文本，或者用JPG，WebP传输图片等；</li>
+<li>用 HTTP Status Code传递Server的状态信息。比如最常用的 200 表示成功，500 表示Server内部错误等。</li>
+</ul>
+<p>最重要的。。 一个大神这么解释 ：</p>
+<h1 id="看Url就知道要什么，看http-method就知道干什么，看http-status-code就知道结果如何"><a href="#看Url就知道要什么，看http-method就知道干什么，看http-status-code就知道结果如何" class="headerlink" title="看Url就知道要什么，看http method就知道干什么，看http status  code就知道结果如何"></a>看Url就知道要什么，看http method就知道干什么，看http status  code就知道结果如何</h1><p>这TM就是经典</p>
+<p>附上知乎地址：<a href="https://www.zhihu.com/question/28557115" target="_blank" rel="noopener">https://www.zhihu.com/question/28557115</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/RESTful 重新理解一下/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-别让 Intellij IDEA 玩弄你的项目" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/">别让 Intellij IDEA 玩弄你的项目</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我相信有很多人手贱，不停的在IDEA里设置这个设置那个，英文不好真的别瞎点，妈的，今天差点吓出翔</p>
+<p>当Intellij IDEA突然抽风，玩弄你的项目，你的项目只剩下jar包和一些自己生成的文件的时候，我相信你是蒙逼的，妈的，老子的项目呢，老子辛苦写的代码呢，我今天就是这个状态，各种设置，为这破事折腾了一个多小时，麻痹的  干。。。</p>
+<p>总结一下</p>
+<h1 id="1、关闭IDEA"><a href="#1、关闭IDEA" class="headerlink" title="1、关闭IDEA"></a>1、关闭IDEA</h1><h1 id="2-然后删除项目文件夹下的-idea文件夹"><a href="#2-然后删除项目文件夹下的-idea文件夹" class="headerlink" title="2.然后删除项目文件夹下的.idea文件夹"></a>2.然后删除项目文件夹下的.idea文件夹</h1><h1 id="3-重新用IDEA工具打开项目"><a href="#3-重新用IDEA工具打开项目" class="headerlink" title="3.重新用IDEA工具打开项目"></a>3.重新用IDEA工具打开项目</h1><p>一定是关闭IDEA而不是关掉这个项目，别想着其他项目开着只关这个，没用的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-List删除指定元素的坑" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/List删除指定元素的坑/">List删除指定元素的坑</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/List删除指定元素的坑/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在日常摞代码的时候，难免会遇到要从集合中删除某个元素的需求，相信在这个破需求下摔的鼻青脸肿的猿不是少数</p>
+<p>ConcurrentModificationException错误</p>
+<p>UnsupportedOperationException错误</p>
+<p>具体原因有很多大神分析了，我再说也没有大神说的清除，这里就只放出解决方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">String[] arr = &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意下下面这条代码，如果从数组转到list直接去迭代删除的话会报错，你可以试试</span></span><br><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(asList(arr));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一种安全删除写法</span></span><br><span class="line">Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Objects.equals(it.next(), <span class="string">"a"</span>)) &#123;</span><br><span class="line">        it.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种安全删除写法，比较有逼格的,java8新特性 Lambda</span></span><br><span class="line">list.removeIf(Predicate.isEqual(<span class="string">"a"</span>));</span><br></pre></td></tr></table></figure>
+<p>最烦人的最坑的就是从数组转到list然后删除，摔过的人都知道</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/List删除指定元素的坑/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-用一个简单的方式判断List中是否存在重复数据" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -247,74 +535,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/01/html页面指定区域打印\生成图片/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-List删除指定元素的坑" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/List删除指定元素的坑/">List删除指定元素的坑</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/01/List删除指定元素的坑/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在日常摞代码的时候，难免会遇到要从集合中删除某个元素的需求，相信在这个破需求下摔的鼻青脸肿的猿不是少数</p>
-<p>ConcurrentModificationException错误</p>
-<p>UnsupportedOperationException错误</p>
-<p>具体原因有很多大神分析了，我再说也没有大神说的清除，这里就只放出解决方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">String[] arr = &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意下下面这条代码，如果从数组转到list直接去迭代删除的话会报错，你可以试试</span></span><br><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(asList(arr));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一种安全删除写法</span></span><br><span class="line">Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Objects.equals(it.next(), <span class="string">"a"</span>)) &#123;</span><br><span class="line">        it.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种安全删除写法，比较有逼格的,java8新特性 Lambda</span></span><br><span class="line">list.removeIf(Predicate.isEqual(<span class="string">"a"</span>));</span><br></pre></td></tr></table></figure>
-<p>最烦人的最坑的就是从数组转到list然后删除，摔过的人都知道</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/List删除指定元素的坑/">展开全文 >></a>
         </p>
       
 
