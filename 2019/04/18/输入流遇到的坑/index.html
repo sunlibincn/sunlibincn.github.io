@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
   <title>sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="输入流遇到的坑code1：123456789private static void method1() &amp;#123;    try (FileOutputStream fileOutputStream = new FileOutputStream(&quot;demo.txt&quot;, true)) &amp;#123;        for (int i = 0; i &amp;lt; 10; i++) &amp;#123;">
+  <meta name="description" content="title:输入流遇到的坑code1：123456789private static void method1() &amp;#123;    try (FileOutputStream fileOutputStream = new FileOutputStream(&quot;demo.txt&quot;, true)) &amp;#123;        for (int i = 0; i &amp;lt; 10; i++) &amp;#12">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sunlibin.cn 的博客">
 <meta property="og:url" content="https://sunlibincn.github.io/2019/04/18/输入流遇到的坑/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="输入流遇到的坑code1：123456789private static void method1() &amp;#123;    try (FileOutputStream fileOutputStream = new FileOutputStream(&quot;demo.txt&quot;, true)) &amp;#123;        for (int i = 0; i &amp;lt; 10; i++) &amp;#123;">
+<meta property="og:description" content="title:输入流遇到的坑code1：123456789private static void method1() &amp;#123;    try (FileOutputStream fileOutputStream = new FileOutputStream(&quot;demo.txt&quot;, true)) &amp;#123;        for (int i = 0; i &amp;lt; 10; i++) &amp;#12">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T07:02:56.461Z">
+<meta property="og:updated_time" content="2019-04-18T07:14:34.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sunlibin.cn 的博客">
-<meta name="twitter:description" content="输入流遇到的坑code1：123456789private static void method1() &amp;#123;    try (FileOutputStream fileOutputStream = new FileOutputStream(&quot;demo.txt&quot;, true)) &amp;#123;        for (int i = 0; i &amp;lt; 10; i++) &amp;#123;">
+<meta name="twitter:description" content="title:输入流遇到的坑code1：123456789private static void method1() &amp;#123;    try (FileOutputStream fileOutputStream = new FileOutputStream(&quot;demo.txt&quot;, true)) &amp;#123;        for (int i = 0; i &amp;lt; 10; i++) &amp;#12">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -143,7 +143,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h2 id="输入流遇到的坑"><a href="#输入流遇到的坑" class="headerlink" title="输入流遇到的坑"></a>输入流遇到的坑</h2><p>code1：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"demo.txt"</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            fileOutputStream.write((<span class="string">"java"</span> + i + <span class="string">"\n"</span>).getBytes());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="title-输入流遇到的坑"><a href="#title-输入流遇到的坑" class="headerlink" title="title:输入流遇到的坑"></a>title:输入流遇到的坑</h2><p>code1：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"demo.txt"</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            fileOutputStream.write((<span class="string">"java"</span> + i + <span class="string">"\n"</span>).getBytes());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>code2：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (FileWriter fileWriter = <span class="keyword">new</span> FileWriter(<span class="string">"demo.txt"</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            fileWriter.write(<span class="string">"xxx"</span> + i + <span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>首先，这两个方法都可以正确执行，java8的新特性，在try后面跟个括号，括号里的声明的流（以上code1是字节流  code2是字符流）在代码执行完成后是可以自动关闭流的</p>
 <p>再看下面三个代码：</p>
@@ -292,7 +292,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#输入流遇到的坑"><span class="toc-number">1.</span> <span class="toc-text">输入流遇到的坑</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-输入流遇到的坑"><span class="toc-number">1.</span> <span class="toc-text">title:输入流遇到的坑</span></a></li></ol>
                     </div>
                 </span>
             </div>

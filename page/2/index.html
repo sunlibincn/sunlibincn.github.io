@@ -138,19 +138,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-TCP的三次握手" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-位运算的权限实践" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/TCP的三次握手/">TCP的三次握手</a>
+      <a class="article-title" href="/2018/12/01/位运算的权限实践/">位运算的权限实践</a>
     </h1>
   
 
         
-        <a href="/2018/12/01/TCP的三次握手/" class="archive-article-date">
+        <a href="/2018/12/01/位运算的权限实践/" class="archive-article-date">
   	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
@@ -158,14 +158,48 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致</p>
-<p>因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任</p>
-<p>我理解的不多，这次只说说三次握手</p>
-<p>什么是三次握手呢，我举个特别简单的例子</p>
-<p>这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地瓜马上要接着说『宝塔镇河妖』，一言不合拖裤子亮枪</p>
-<p>TCP的握手也有黑话，就是falg标志『SYN』和『ACK』，我带着数据和SYN请求你（第一次），你看到时候不会立即处理，要传回给我数据和SYN同时加上你的ACK（第二次），我收到了数据、SYN、ACK三样一样不差，我拿出我的SYN，只带着数据和你的ACK再请求你（第三次）这时候你才开始接受数据，这就是三次握手</p>
-<p>如果说这三次握手中有其中一个环节对不上，这买卖不做了，我重来，直到黑话都对了为止</p>
-<p>说的有点粗糙，理解的也有点浅，凑活看看吧</p>
+        <p>人狠话不多</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.six.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by six on 17/10/18.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 位运算的权限实践</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * userA 和 userB 为两个模拟的权限测试用户，权限一共有 1-6 6种不同权限</span></span><br><span class="line"><span class="comment"> * 假定 ^ 取权（求次方），劝和就是次方相加，例如：1\2\3的劝和为 2 ^ 1 + 2 ^ 2 + 2 ^ 3 = 2 + 4 + 8 = 14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PermissionDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户A的权限</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] userAPermissions = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    <span class="comment">// 用户B的权限</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] userBPermissions = &#123;<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 实践</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * 说明：userPermissionA、userPermissionB 为用户最终权限值，这里通过 getUserPermissionTotal() 方法求得</span></span><br><span class="line"><span class="comment">     * 通常，权限值是直接存在于数据库中的</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> userPermissionA = getUserPermissionTotal(userAPermissions);</span><br><span class="line">        System.out.println(<span class="string">"用户A的权限值为："</span> + userPermissionA + <span class="string">",权限组成为："</span> + Arrays.toString(userAPermissions));</span><br><span class="line">        System.out.println(<span class="string">"用户A是否有1和2这两个权限："</span> + validPermission(userPermissionA, <span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line">        System.out.println(<span class="string">"用户A是否有1和3这两个权限："</span> + validPermission(userPermissionA, <span class="number">1</span>, <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> userPermissionB = getUserPermissionTotal(userBPermissions);</span><br><span class="line">        System.out.println(<span class="string">"用户B的权限值为："</span> + userPermissionB + <span class="string">",权限组成为："</span> + Arrays.toString(userBPermissions));</span><br><span class="line">        System.out.println(<span class="string">"用户B是否有6这个权限："</span> + validPermission(userPermissionB, <span class="number">6</span>));</span><br><span class="line">        System.out.println(<span class="string">"用户B是否有2这个权限："</span> + validPermission(userPermissionB, <span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到权限权和</span></span><br><span class="line"><span class="comment">     * 劝和将为最终用户权限值(数据库中只存这个就可以了)</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> permissions 权限值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getUserPermissionTotal</span><span class="params">(<span class="keyword">int</span>[] permissions)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> permissionTotal = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : permissions) &#123;</span><br><span class="line">            permissionTotal += (Math.pow(<span class="number">2</span>, i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> permissionTotal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断是否有权限</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userPermission 用户权限值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> permissionNum  需要判断的权限，可多个，权限之间是&amp;的关系</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validPermission</span><span class="params">(<span class="keyword">int</span> userPermission, <span class="keyword">int</span>... permissionNum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> permissions = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : permissionNum) &#123;</span><br><span class="line">            permissions += (Math.pow(<span class="number">2</span>, i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// （权限值 &amp; 所验证权限的权和）== 所验证权限的权和 ？true ：false；</span></span><br><span class="line">        <span class="keyword">return</span> (userPermission &amp; permissions) == permissions;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>权限做完有个问题，如果我想反过来，通过权限值能不能知道用户有哪些权限呢？总不能挨个验证吗，有谁能解答这个问题，劳烦解惑<br>已有方案，要感谢两位老鸟</p>
+<p>19 转二进制 10011</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>二进制</strong></td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td><strong>位</strong></td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align:center">2的4次方（16）</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">2的1次方（2）</td>
+<td style="text-align:center">2的0次方（1）</td>
+</tr>
+</tbody>
+</table>
 
       
 
@@ -178,7 +212,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/TCP的三次握手/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/01/位运算的权限实践/">展开全文 >></a>
         </p>
       
 
@@ -208,19 +242,19 @@
 
 
   
-    <article id="post-RESTful 重新理解一下" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-密码正则 - JAVA版本" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/RESTful 重新理解一下/">RESTful 重新理解一下</a>
+      <a class="article-title" href="/2018/12/01/密码正则 - JAVA版本/">密码正则 - JAVA版本</a>
     </h1>
   
 
         
-        <a href="/2018/12/01/RESTful 重新理解一下/" class="archive-article-date">
+        <a href="/2018/12/01/密码正则 - JAVA版本/" class="archive-article-date">
   	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
@@ -228,28 +262,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>因为半年前的一个项目，现在需要新接入一家服务机构，这个项目接的所有机构一直是写webService，忽然这个行业里的奇葩企业偏偏就不用wevService，这里我要说，你干的好，真的好。</p>
-<p>这公司给了一个非常清楚，看着非常舒服的API文档，在文档刚开始，距离目录不远的地方有几个字，看到之后我一下子感觉这次的接入应该会很愉快，『我们提供RESTful访问』</p>
-<p>然后接着看了几个重要的接口，出现了一个疑问，他们理解的REST和我理解的REST是一个么？</p>
-<p>这不是说人家怎么样，是我的错，我之前的想法很简单，就是我请求你，你给我返回一个json就完事了呗，然后，请忽略我这个脑子，至此，我发现我没有脑子</p>
-<p>重点来了，我去查了好多资料，什么是REST什么是RESTful，看的我是云里雾里，感觉以前写的接口都TM是假的，偶然间，在知乎看到一个答案，霍然开朗</p>
-<p>这么说的</p>
-<ul>
-<li>REST描述的是在网络中client和server的一种交互形式；</li>
-<li>Server提供的RESTful API中，URL中只使用名词来指定资源，原则上不使用动词；</li>
-<li>用HTTP协议里的动词来实现资源的添加，修改，删除等操作；<ul>
-<li>GET    用来获取资源</li>
-<li>POST  用来新建资源（也可以用于更新资源）</li>
-<li>PUT    用来更新资源</li>
-<li>DELETE  用来删除资源</li>
-</ul>
-</li>
-<li>Server和Client之间传递某资源的一个表现形式，比如用JSON，XML传输文本，或者用JPG，WebP传输图片等；</li>
-<li>用 HTTP Status Code传递Server的状态信息。比如最常用的 200 表示成功，500 表示Server内部错误等。</li>
-</ul>
-<p>最重要的。。 一个大神这么解释 ：</p>
-<h1 id="看Url就知道要什么，看http-method就知道干什么，看http-status-code就知道结果如何"><a href="#看Url就知道要什么，看http-method就知道干什么，看http-status-code就知道结果如何" class="headerlink" title="看Url就知道要什么，看http method就知道干什么，看http status  code就知道结果如何"></a>看Url就知道要什么，看http method就知道干什么，看http status  code就知道结果如何</h1><p>这TM就是经典</p>
-<p>附上知乎地址：<a href="https://www.zhihu.com/question/28557115" target="_blank" rel="noopener">https://www.zhihu.com/question/28557115</a></p>
+        <p>直接看代码  不废话</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String newPwd = controller.getPara(<span class="string">"newPassword"</span>);</span><br><span class="line"><span class="comment">// 判断密码是否包含数字：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> i = newPwd.matches(<span class="string">".*\\d+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码是否包含字母：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> j = newPwd.matches(<span class="string">".*[a-zA-Z]+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码是否包含特殊符号(~!@#$%^&amp;*()_+|&lt;&gt;,.?/:;'[]&#123;&#125;\)：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> k = newPwd.matches(<span class="string">".*[~!@#$%^&amp;*()_+|&lt;&gt;,.?/:;\\[\\]&#123;&#125;]+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码长度是否在6-16位</span></span><br><span class="line"><span class="keyword">int</span> l = newPwd.length();</span><br><span class="line"><span class="comment">// 判断密码中是否包含用户名</span></span><br><span class="line"><span class="keyword">boolean</span> contains = newPwd.contains(user);</span><br><span class="line"><span class="keyword">if</span> (i + j + k &lt; <span class="number">2</span> || l &lt; <span class="number">6</span> || l &gt; <span class="number">16</span> || contains) &#123;</span><br><span class="line">    addError(ERROR_MSG, <span class="string">"密码格式错误，不能包含用户名，长度 6-16 位，必须包括字母、数字、特殊符号(单、双引号除外)"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转载自：<a href="http://www.cnblogs.com/goodcheap/p/6051833.html" target="_blank" rel="noopener">http://www.cnblogs.com/goodcheap/p/6051833.html</a></p>
 
       
 
@@ -262,7 +277,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/RESTful 重新理解一下/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/01/密码正则 - JAVA版本/">展开全文 >></a>
         </p>
       
 
@@ -358,19 +373,19 @@
 
 
   
-    <article id="post-List删除指定元素的坑" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-html页面指定区域打印\生成图片" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/List删除指定元素的坑/">List删除指定元素的坑</a>
+      <a class="article-title" href="/2018/12/01/html页面指定区域打印\生成图片/">html页面指定区域打印\生成图片</a>
     </h1>
   
 
         
-        <a href="/2018/12/01/List删除指定元素的坑/" class="archive-article-date">
+        <a href="/2018/12/01/html页面指定区域打印\生成图片/" class="archive-article-date">
   	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
@@ -378,12 +393,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在日常摞代码的时候，难免会遇到要从集合中删除某个元素的需求，相信在这个破需求下摔的鼻青脸肿的猿不是少数</p>
-<p>ConcurrentModificationException错误</p>
-<p>UnsupportedOperationException错误</p>
-<p>具体原因有很多大神分析了，我再说也没有大神说的清除，这里就只放出解决方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">String[] arr = &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意下下面这条代码，如果从数组转到list直接去迭代删除的话会报错，你可以试试</span></span><br><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(asList(arr));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一种安全删除写法</span></span><br><span class="line">Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Objects.equals(it.next(), <span class="string">"a"</span>)) &#123;</span><br><span class="line">        it.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种安全删除写法，比较有逼格的,java8新特性 Lambda</span></span><br><span class="line">list.removeIf(Predicate.isEqual(<span class="string">"a"</span>));</span><br></pre></td></tr></table></figure>
-<p>最烦人的最坑的就是从数组转到list然后删除，摔过的人都知道</p>
+        <p>先看代码</p>
+<h1 id="html"><a href="#html" class="headerlink" title="html"></a>html</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">style</span>=<span class="string">"background-color: #abc;"</span> <span class="attr">id</span>=<span class="string">'myPrint'</span>&gt;</span> </span><br><span class="line">	即将打印这段文字</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span>      </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 注意 id：myPrint --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0)"</span> <span class="attr">onclick</span>=<span class="string">"printById('myPrint')"</span>&gt;</span>打印<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> html2canvas(<span class="built_in">document</span>.getElementById(id), &#123;  </span><br><span class="line">allowTaint : <span class="literal">true</span>,  </span><br><span class="line">taintTest : <span class="literal">false</span>,  </span><br><span class="line">onrendered : <span class="function"><span class="keyword">function</span>(<span class="params">canvas</span>) </span>&#123;  </span><br><span class="line">	canvas.id = <span class="string">"mycanvas"</span>;  </span><br><span class="line">	<span class="keyword">var</span> dataUrl = canvas.toDataURL();  </span><br><span class="line">	<span class="keyword">var</span> newImg = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);  </span><br><span class="line">	newImg.src = dataUrl;  </span><br><span class="line">	<span class="keyword">var</span> printWindow = <span class="built_in">window</span>.open(newImg.src);  </span><br><span class="line">	printWindow.document.write(<span class="string">'&lt;img src="'</span>+newImg.src+<span class="string">'" /&gt;'</span>)  </span><br><span class="line">	printWindow.print();  </span><br><span class="line">	&#125;  </span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+<p>这里需要用到一个插件 <a href="http://html2canvas.hertzen.com/build/html2canvas.js" target="_blank" rel="noopener">http://html2canvas.hertzen.com/build/html2canvas.js</a></p>
+<p>这种方式可以完成指定区域的图片生成，在网页上使用打印机格式也是没有问题的，但是，这里有但是啊，但是存在一个问题，在第一次加载打印的时候打印内容是出不来的，这可能需要一些时间吧，我这么认为，具体是什么原因我也没有深究（没本事。。 哈哈）</p>
+<p>下面说第二种，这第二种方法同样也存在问题，不会生成图片，网页打印没问题，看需求吧，我也不是专门研究这东西的，项目用到了就提上来说说，坑肯定存在的，看踩哪个，或者哪个哥们有好方法 set 进来，一起学习学习</p>
+<p>话不多说，上代码</p>
+<h1 id="html-1"><a href="#html-1" class="headerlink" title="html"></a>html</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--startprint1--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这行文字将被打印<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>注意上下这两个注释，非常重要，当然你想改改也可以<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>注释中的1也不是摆设，这个可以控制你打印多个部分<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--endprint1--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">preview(1)</span>&gt;</span>打印<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="js-1"><a href="#js-1" class="headerlink" title="js"></a>js</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function preview(oper)&#123;</span><br><span class="line">    if (oper &lt; 10)&#123;</span><br><span class="line">        bdhtml=window.document.body.innerHTML;//获取当前页的html代码</span><br><span class="line">        sprnstr=&quot;&lt;!--startprint&quot;+oper+&quot;--&gt;&quot;;//设置打印开始区域</span><br><span class="line">        eprnstr=&quot;&lt;!--endprint&quot;+oper+&quot;--&gt;&quot;;//设置打印结束区域</span><br><span class="line">        prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); //从开始代码向后取html</span><br><span class="line">        prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html</span><br><span class="line">        window.document.body.innerHTML=prnhtml;</span><br><span class="line">        window.print();</span><br><span class="line">        window.document.body.innerHTML=bdhtml;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        window.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很不负责任的说，这东西能用，代码可以直接拿走</p>
+<p>这些代码也是我从网上摘的，写代码的前辈辛苦了</p>
 
       
 
@@ -396,7 +416,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/List删除指定元素的坑/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/01/html页面指定区域打印\生成图片/">展开全文 >></a>
         </p>
       
 
@@ -491,19 +511,19 @@
 
 
   
-    <article id="post-html页面指定区域打印\生成图片" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-List删除指定元素的坑" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/html页面指定区域打印\生成图片/">html页面指定区域打印\生成图片</a>
+      <a class="article-title" href="/2018/12/01/List删除指定元素的坑/">List删除指定元素的坑</a>
     </h1>
   
 
         
-        <a href="/2018/12/01/html页面指定区域打印\生成图片/" class="archive-article-date">
+        <a href="/2018/12/01/List删除指定元素的坑/" class="archive-article-date">
   	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
@@ -511,17 +531,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>先看代码</p>
-<h1 id="html"><a href="#html" class="headerlink" title="html"></a>html</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">style</span>=<span class="string">"background-color: #abc;"</span> <span class="attr">id</span>=<span class="string">'myPrint'</span>&gt;</span> </span><br><span class="line">	即将打印这段文字</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span>      </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 注意 id：myPrint --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0)"</span> <span class="attr">onclick</span>=<span class="string">"printById('myPrint')"</span>&gt;</span>打印<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> html2canvas(<span class="built_in">document</span>.getElementById(id), &#123;  </span><br><span class="line">allowTaint : <span class="literal">true</span>,  </span><br><span class="line">taintTest : <span class="literal">false</span>,  </span><br><span class="line">onrendered : <span class="function"><span class="keyword">function</span>(<span class="params">canvas</span>) </span>&#123;  </span><br><span class="line">	canvas.id = <span class="string">"mycanvas"</span>;  </span><br><span class="line">	<span class="keyword">var</span> dataUrl = canvas.toDataURL();  </span><br><span class="line">	<span class="keyword">var</span> newImg = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);  </span><br><span class="line">	newImg.src = dataUrl;  </span><br><span class="line">	<span class="keyword">var</span> printWindow = <span class="built_in">window</span>.open(newImg.src);  </span><br><span class="line">	printWindow.document.write(<span class="string">'&lt;img src="'</span>+newImg.src+<span class="string">'" /&gt;'</span>)  </span><br><span class="line">	printWindow.print();  </span><br><span class="line">	&#125;  </span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
-<p>这里需要用到一个插件 <a href="http://html2canvas.hertzen.com/build/html2canvas.js" target="_blank" rel="noopener">http://html2canvas.hertzen.com/build/html2canvas.js</a></p>
-<p>这种方式可以完成指定区域的图片生成，在网页上使用打印机格式也是没有问题的，但是，这里有但是啊，但是存在一个问题，在第一次加载打印的时候打印内容是出不来的，这可能需要一些时间吧，我这么认为，具体是什么原因我也没有深究（没本事。。 哈哈）</p>
-<p>下面说第二种，这第二种方法同样也存在问题，不会生成图片，网页打印没问题，看需求吧，我也不是专门研究这东西的，项目用到了就提上来说说，坑肯定存在的，看踩哪个，或者哪个哥们有好方法 set 进来，一起学习学习</p>
-<p>话不多说，上代码</p>
-<h1 id="html-1"><a href="#html-1" class="headerlink" title="html"></a>html</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--startprint1--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这行文字将被打印<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>注意上下这两个注释，非常重要，当然你想改改也可以<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>注释中的1也不是摆设，这个可以控制你打印多个部分<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--endprint1--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">preview(1)</span>&gt;</span>打印<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="js-1"><a href="#js-1" class="headerlink" title="js"></a>js</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function preview(oper)&#123;</span><br><span class="line">    if (oper &lt; 10)&#123;</span><br><span class="line">        bdhtml=window.document.body.innerHTML;//获取当前页的html代码</span><br><span class="line">        sprnstr=&quot;&lt;!--startprint&quot;+oper+&quot;--&gt;&quot;;//设置打印开始区域</span><br><span class="line">        eprnstr=&quot;&lt;!--endprint&quot;+oper+&quot;--&gt;&quot;;//设置打印结束区域</span><br><span class="line">        prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); //从开始代码向后取html</span><br><span class="line">        prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html</span><br><span class="line">        window.document.body.innerHTML=prnhtml;</span><br><span class="line">        window.print();</span><br><span class="line">        window.document.body.innerHTML=bdhtml;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        window.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>很不负责任的说，这东西能用，代码可以直接拿走</p>
-<p>这些代码也是我从网上摘的，写代码的前辈辛苦了</p>
+        <p>在日常摞代码的时候，难免会遇到要从集合中删除某个元素的需求，相信在这个破需求下摔的鼻青脸肿的猿不是少数</p>
+<p>ConcurrentModificationException错误</p>
+<p>UnsupportedOperationException错误</p>
+<p>具体原因有很多大神分析了，我再说也没有大神说的清除，这里就只放出解决方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">String[] arr = &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意下下面这条代码，如果从数组转到list直接去迭代删除的话会报错，你可以试试</span></span><br><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(asList(arr));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一种安全删除写法</span></span><br><span class="line">Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Objects.equals(it.next(), <span class="string">"a"</span>)) &#123;</span><br><span class="line">        it.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种安全删除写法，比较有逼格的,java8新特性 Lambda</span></span><br><span class="line">list.removeIf(Predicate.isEqual(<span class="string">"a"</span>));</span><br></pre></td></tr></table></figure>
+<p>最烦人的最坑的就是从数组转到list然后删除，摔过的人都知道</p>
 
       
 
@@ -534,7 +549,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/html页面指定区域打印\生成图片/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/01/List删除指定元素的坑/">展开全文 >></a>
         </p>
       
 
