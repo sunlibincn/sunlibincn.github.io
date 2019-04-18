@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
-  <title>Archives | sunlibin.cn 的博客</title>
+  <title>并发和并行的概念 | sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="草莽出身，励志成为一名合格的Coder">
+  <meta name="description" content="并发：例如：在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭 理解：在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行 并行：例如：在吃饭，有电话进来，拿起电话一边吃饭一边讲电话 理解：在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行 重点在于：并行是同步，并发是交替 巨人的肩膀：https:/">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
-<meta property="og:type" content="website">
-<meta property="og:title" content="sunlibin.cn 的博客">
-<meta property="og:url" content="https://sunlibincn.github.io/archives/page/2/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并发和并行的概念">
+<meta property="og:url" content="https://sunlibincn.github.io/2019/04/18/并发和并行的概念/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="草莽出身，励志成为一名合格的Coder">
+<meta property="og:description" content="并发：例如：在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭 理解：在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行 并行：例如：在吃饭，有电话进来，拿起电话一边吃饭一边讲电话 理解：在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行 重点在于：并行是同步，并发是交替 巨人的肩膀：https:/">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-18T06:51:16.769Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sunlibin.cn 的博客">
-<meta name="twitter:description" content="草莽出身，励志成为一名合格的Coder">
+<meta name="twitter:title" content="并发和并行的概念">
+<meta name="twitter:description" content="并发：例如：在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭 理解：在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行 并行：例如：在吃饭，有电话进来，拿起电话一边吃饭一边讲电话 理解：在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行 重点在于：并行是同步，并发是交替 巨人的肩膀：https:/">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -136,133 +137,183 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-并发和并行的概念" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      并发和并行的概念
+    </h1>
+  
+
+        
+        <a href="/2019/04/18/并发和并行的概念/" class="archive-article-date">
+  	<time datetime="2019-04-18T06:46:27.383Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="并发："><a href="#并发：" class="headerlink" title="并发："></a>并发：</h1><h3 id="例如："><a href="#例如：" class="headerlink" title="例如："></a>例如：</h3><p>在吃饭，有电话进来，可以停下吃饭去接电话，电话讲完回来继续吃饭</p>
+<h3 id="理解："><a href="#理解：" class="headerlink" title="理解："></a>理解：</h3><p>在处理事件的同时可以选择暂停本事件去处理另一事件，有交替处理多个事件的能力，左顾右盼，不同的代码块交替执行</p>
+<h1 id="并行："><a href="#并行：" class="headerlink" title="并行："></a>并行：</h1><h3 id="例如：-1"><a href="#例如：-1" class="headerlink" title="例如："></a>例如：</h3><p>在吃饭，有电话进来，拿起电话一边吃饭一边讲电话</p>
+<h3 id="理解：-1"><a href="#理解：-1" class="headerlink" title="理解："></a>理解：</h3><p>在处理一个事件的同时有能力处理另一件事情，一心多用，同时开工，不同的代码块同时执行</p>
+<pre><code>重点在于：并行是同步，并发是交替
+</code></pre><p>巨人的肩膀：<a href="https://blog.csdn.net/qq_27825451/article/details/78850336" target="_blank" rel="noopener">https://blog.csdn.net/qq_27825451/article/details/78850336</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/alipay_get.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/WX_get.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/">用一个简单的方式判断List中是否存在重复数据</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2019/04/18/并发和并行的概念/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/01/html页面指定区域打印\生成图片/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/08/使用Nginx反向代理tomcat服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用Nginx反向代理tomcat服务器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/01/html页面指定区域打印\生成图片/">html页面指定区域打印\生成图片</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#并发："><span class="toc-number">1.</span> <span class="toc-text">并发：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例如："><span class="toc-number">1.0.1.</span> <span class="toc-text">例如：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解："><span class="toc-number">1.0.2.</span> <span class="toc-text">理解：</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#并行："><span class="toc-number">2.</span> <span class="toc-text">并行：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例如：-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">例如：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解：-1"><span class="toc-number">2.0.2.</span> <span class="toc-text">理解：</span></a></li></ol></li>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/01/List删除指定元素的坑/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/01/List删除指定元素的坑/">List删除指定元素的坑</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/01/Junit Test/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/01/Junit Test/">Junit Test</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -286,8 +337,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
