@@ -138,19 +138,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-位运算的权限实践" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-TCP的三次握手" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/位运算的权限实践/">位运算的权限实践</a>
+      <a class="article-title" href="/2018/12/01/TCP的三次握手/">TCP的三次握手</a>
     </h1>
   
 
         
-        <a href="/2018/12/01/位运算的权限实践/" class="archive-article-date">
+        <a href="/2018/12/01/TCP的三次握手/" class="archive-article-date">
   	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
@@ -158,48 +158,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>人狠话不多</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.six.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by six on 17/10/18.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 位运算的权限实践</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * userA 和 userB 为两个模拟的权限测试用户，权限一共有 1-6 6种不同权限</span></span><br><span class="line"><span class="comment"> * 假定 ^ 取权（求次方），劝和就是次方相加，例如：1\2\3的劝和为 2 ^ 1 + 2 ^ 2 + 2 ^ 3 = 2 + 4 + 8 = 14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PermissionDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户A的权限</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] userAPermissions = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    <span class="comment">// 用户B的权限</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] userBPermissions = &#123;<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 实践</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * 说明：userPermissionA、userPermissionB 为用户最终权限值，这里通过 getUserPermissionTotal() 方法求得</span></span><br><span class="line"><span class="comment">     * 通常，权限值是直接存在于数据库中的</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> userPermissionA = getUserPermissionTotal(userAPermissions);</span><br><span class="line">        System.out.println(<span class="string">"用户A的权限值为："</span> + userPermissionA + <span class="string">",权限组成为："</span> + Arrays.toString(userAPermissions));</span><br><span class="line">        System.out.println(<span class="string">"用户A是否有1和2这两个权限："</span> + validPermission(userPermissionA, <span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line">        System.out.println(<span class="string">"用户A是否有1和3这两个权限："</span> + validPermission(userPermissionA, <span class="number">1</span>, <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> userPermissionB = getUserPermissionTotal(userBPermissions);</span><br><span class="line">        System.out.println(<span class="string">"用户B的权限值为："</span> + userPermissionB + <span class="string">",权限组成为："</span> + Arrays.toString(userBPermissions));</span><br><span class="line">        System.out.println(<span class="string">"用户B是否有6这个权限："</span> + validPermission(userPermissionB, <span class="number">6</span>));</span><br><span class="line">        System.out.println(<span class="string">"用户B是否有2这个权限："</span> + validPermission(userPermissionB, <span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到权限权和</span></span><br><span class="line"><span class="comment">     * 劝和将为最终用户权限值(数据库中只存这个就可以了)</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> permissions 权限值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getUserPermissionTotal</span><span class="params">(<span class="keyword">int</span>[] permissions)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> permissionTotal = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : permissions) &#123;</span><br><span class="line">            permissionTotal += (Math.pow(<span class="number">2</span>, i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> permissionTotal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断是否有权限</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userPermission 用户权限值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> permissionNum  需要判断的权限，可多个，权限之间是&amp;的关系</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validPermission</span><span class="params">(<span class="keyword">int</span> userPermission, <span class="keyword">int</span>... permissionNum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> permissions = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : permissionNum) &#123;</span><br><span class="line">            permissions += (Math.pow(<span class="number">2</span>, i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// （权限值 &amp; 所验证权限的权和）== 所验证权限的权和 ？true ：false；</span></span><br><span class="line">        <span class="keyword">return</span> (userPermission &amp; permissions) == permissions;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>权限做完有个问题，如果我想反过来，通过权限值能不能知道用户有哪些权限呢？总不能挨个验证吗，有谁能解答这个问题，劳烦解惑<br>已有方案，要感谢两位老鸟</p>
-<p>19 转二进制 10011</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>二进制</strong></td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td><strong>位</strong></td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center">2的4次方（16）</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">2的1次方（2）</td>
-<td style="text-align:center">2的0次方（1）</td>
-</tr>
-</tbody>
-</table>
+        <p>TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致</p>
+<p>因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任</p>
+<p>我理解的不多，这次只说说三次握手</p>
+<p>什么是三次握手呢，我举个特别简单的例子</p>
+<p>这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地瓜马上要接着说『宝塔镇河妖』，一言不合拖裤子亮枪</p>
+<p>TCP的握手也有黑话，就是falg标志『SYN』和『ACK』，我带着数据和SYN请求你（第一次），你看到时候不会立即处理，要传回给我数据和SYN同时加上你的ACK（第二次），我收到了数据、SYN、ACK三样一样不差，我拿出我的SYN，只带着数据和你的ACK再请求你（第三次）这时候你才开始接受数据，这就是三次握手</p>
+<p>如果说这三次握手中有其中一个环节对不上，这买卖不做了，我重来，直到黑话都对了为止</p>
+<p>说的有点粗糙，理解的也有点浅，凑活看看吧</p>
 
       
 
@@ -212,7 +178,265 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/位运算的权限实践/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/01/TCP的三次握手/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-设计模式 总结，内附各详解地址" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/设计模式 总结，内附各详解地址/">设计模式 总结，内附各详解地址</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/设计模式 总结，内附各详解地址/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以下是学习过程中查询的资料,别人总结的资料,比较容易理解(站在各位巨人的肩膀上,望博主勿究)<br>设计模式分为三种类型来归类 创建型 、结构型 、行为型</p>
+<h1 id="创建型"><a href="#创建型" class="headerlink" title="创建型"></a>创建型</h1><ol>
+<li>抽象工厂模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/03/28/2418836.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/03/28/2418836.html</a></li>
+<li>工厂方法 <a href="http://www.cnblogs.com/java-my-life/archive/2012/03/25/2416227.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/03/25/2416227.html</a></li>
+<li>建造者模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/07/2433939.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/07/2433939.html</a></li>
+<li>原型模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/11/2439387.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/11/2439387.html</a></li>
+<li>单态模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/03/31/2425631.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/03/31/2425631.html</a></li>
+</ol>
+<h1 id="结构型"><a href="#结构型" class="headerlink" title="结构型"></a>结构型</h1><ol>
+<li>适配器模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/13/2442795.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/13/2442795.html</a></li>
+<li>桥接模式 <a href="http://blog.csdn.net/jason0539/article/details/22568865" target="_blank" rel="noopener">http://blog.csdn.net/jason0539/article/details/22568865</a></li>
+<li>组合模式 <a href="http://blog.csdn.net/jason0539/article/details/22642281" target="_blank" rel="noopener">http://blog.csdn.net/jason0539/article/details/22642281</a></li>
+<li>外观模式 <a href="http://blog.csdn.net/jason0539/article/details/227753110" target="_blank" rel="noopener">http://blog.csdn.net/jason0539/article/details/227753110</a></li>
+<li>装饰者模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html</a></li>
+<li>享元模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/26/2468499.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/26/2468499.html</a></li>
+<li>代理模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/23/2466712.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/23/2466712.html</a></li>
+</ol>
+<h1 id="行为型"><a href="#行为型" class="headerlink" title="行为型"></a>行为型</h1><ol>
+<li>责任链模式 <a href="http://blog.csdn.net/zhouyong0/article/details/7909456" target="_blank" rel="noopener">http://blog.csdn.net/zhouyong0/article/details/7909456</a></li>
+<li>命令模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/01/2526972.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/01/2526972.html</a></li>
+<li>解释器模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/19/2552617.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/19/2552617.html</a></li>
+<li>迭代模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/05/22/2511506.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/05/22/2511506.html</a></li>
+<li>中介者模式 <a href="http://blog.csdn.net/chenhuade85/article/details/8141831" target="_blank" rel="noopener">http://blog.csdn.net/chenhuade85/article/details/8141831</a></li>
+<li>备忘录模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/06/2534942.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/06/2534942.html</a></li>
+<li>观察者模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html</a></li>
+<li>状态模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/08/2538146.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/08/2538146.html</a></li>
+<li>策略模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/05/10/2491891.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/05/10/2491891.html</a></li>
+<li>模板方法模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/05/14/2495235.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/05/14/2495235.html</a></li>
+<li>访问者模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/14/2545381.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/14/2545381.html</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/设计模式 总结，内附各详解地址/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-RESTful 重新理解一下" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/RESTful 重新理解一下/">RESTful 重新理解一下</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/RESTful 重新理解一下/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因为半年前的一个项目，现在需要新接入一家服务机构，这个项目接的所有机构一直是写webService，忽然这个行业里的奇葩企业偏偏就不用wevService，这里我要说，你干的好，真的好。</p>
+<p>这公司给了一个非常清楚，看着非常舒服的API文档，在文档刚开始，距离目录不远的地方有几个字，看到之后我一下子感觉这次的接入应该会很愉快，『我们提供RESTful访问』</p>
+<p>然后接着看了几个重要的接口，出现了一个疑问，他们理解的REST和我理解的REST是一个么？</p>
+<p>这不是说人家怎么样，是我的错，我之前的想法很简单，就是我请求你，你给我返回一个json就完事了呗，然后，请忽略我这个脑子，至此，我发现我没有脑子</p>
+<p>重点来了，我去查了好多资料，什么是REST什么是RESTful，看的我是云里雾里，感觉以前写的接口都TM是假的，偶然间，在知乎看到一个答案，霍然开朗</p>
+<p>这么说的</p>
+<ul>
+<li>REST描述的是在网络中client和server的一种交互形式；</li>
+<li>Server提供的RESTful API中，URL中只使用名词来指定资源，原则上不使用动词；</li>
+<li>用HTTP协议里的动词来实现资源的添加，修改，删除等操作；<ul>
+<li>GET    用来获取资源</li>
+<li>POST  用来新建资源（也可以用于更新资源）</li>
+<li>PUT    用来更新资源</li>
+<li>DELETE  用来删除资源</li>
+</ul>
+</li>
+<li>Server和Client之间传递某资源的一个表现形式，比如用JSON，XML传输文本，或者用JPG，WebP传输图片等；</li>
+<li>用 HTTP Status Code传递Server的状态信息。比如最常用的 200 表示成功，500 表示Server内部错误等。</li>
+</ul>
+<p>最重要的。。 一个大神这么解释 ：</p>
+<h1 id="看Url就知道要什么，看http-method就知道干什么，看http-status-code就知道结果如何"><a href="#看Url就知道要什么，看http-method就知道干什么，看http-status-code就知道结果如何" class="headerlink" title="看Url就知道要什么，看http method就知道干什么，看http status  code就知道结果如何"></a>看Url就知道要什么，看http method就知道干什么，看http status  code就知道结果如何</h1><p>这TM就是经典</p>
+<p>附上知乎地址：<a href="https://www.zhihu.com/question/28557115" target="_blank" rel="noopener">https://www.zhihu.com/question/28557115</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/RESTful 重新理解一下/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-一个面试题 &amp;&amp;、&amp;和||、|" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/一个面试题 &&、&和||、|/">一个面试题 &amp;&amp;、&amp;和||、|</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/一个面试题 &&、&和||、|/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><font color="red">简单，但是比较重要</font></p>
+<p><font color="red">首先</font>，这4个运算符都是表示逻辑运算<br>-逻辑 与 (全部为 true 才返回 true)</p>
+<pre><code>- &amp;&amp; （短路模式）多个条件下，执行过程中如果有一个条件判断出现false，之后的条件都不会再判断，直接返回false
+- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个false，就返回false
+</code></pre><p>-逻辑 或 (只要有一个为 true 就返回 true)</p>
+<pre><code>- 【||】 （短路模式）多个条件下，执行过程中如果有一个条件判断出现true，之后的条件都不会再判断，直接返回true
+- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个true，就返回true
+</code></pre><p><font color="red">这里有一个系统性能的问题，短路与和短路或会相对节省一点点开销</font></p>
+<p><font color="red">其次</font>，&amp; 和 | 还可以进行位运算</p>
+<ul>
+<li>位 与 （有一个0就是0）<ul>
+<li>&amp; 按位与运算，两个数据位比较，如果有一个是0，结果就是0，全为1时，结果才是1</li>
+</ul>
+</li>
+<li>位 或 （有一个1就是1）<ul>
+<li>『|』 按位或运算，两个数据位比较，如果有一个是1，结果就是1</li>
+</ul>
+</li>
+</ul>
+<p>位运算资料：<a href="http://blog.csdn.net/xiaochunyong/article/details/7748713" target="_blank" rel="noopener">http://blog.csdn.net/xiaochunyong/article/details/7748713</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/一个面试题 &&、&和||、|/">展开全文 >></a>
         </p>
       
 
@@ -307,19 +531,19 @@
 
 
   
-    <article id="post-别让 Intellij IDEA 玩弄你的项目" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Junit Test" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/">别让 Intellij IDEA 玩弄你的项目</a>
+      <a class="article-title" href="/2018/12/01/Junit Test/">Junit Test</a>
     </h1>
   
 
         
-        <a href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/" class="archive-article-date">
+        <a href="/2018/12/01/Junit Test/" class="archive-article-date">
   	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
@@ -327,10 +551,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我相信有很多人手贱，不停的在IDEA里设置这个设置那个，英文不好真的别瞎点，妈的，今天差点吓出翔</p>
-<p>当Intellij IDEA突然抽风，玩弄你的项目，你的项目只剩下jar包和一些自己生成的文件的时候，我相信你是蒙逼的，妈的，老子的项目呢，老子辛苦写的代码呢，我今天就是这个状态，各种设置，为这破事折腾了一个多小时，麻痹的  干。。。</p>
-<p>总结一下</p>
-<h1 id="1、关闭IDEA"><a href="#1、关闭IDEA" class="headerlink" title="1、关闭IDEA"></a>1、关闭IDEA</h1><h1 id="2-然后删除项目文件夹下的-idea文件夹"><a href="#2-然后删除项目文件夹下的-idea文件夹" class="headerlink" title="2.然后删除项目文件夹下的.idea文件夹"></a>2.然后删除项目文件夹下的.idea文件夹</h1><h1 id="3-重新用IDEA工具打开项目"><a href="#3-重新用IDEA工具打开项目" class="headerlink" title="3.重新用IDEA工具打开项目"></a>3.重新用IDEA工具打开项目</h1><p>一定是关闭IDEA而不是关掉这个项目，别想着其他项目开着只关这个，没用的</p>
+        <p>看到今天有个新同事写完代码做测试，又把原来的博客翻出来，转到github吧</p>
+<p>不废话，直接上代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JunitTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须非静态，测试用例之前执行，用注解 @Before"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须静态， 测试用例之前执行，比如连接数据库，用注解 @BeforeClass"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须非静态，测试用例之后执行，用注解 @After"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterClass</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须静态，测试用例之后执行，比如断开数据库连接，用注解 @AfterClass"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"***  这是第一个Junit测试  ***"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        注意，这里的断言在引包的时候一定是static的 import static org.junit.Assert.*; 断言		   失败将在Junit测试窗口中终止测试</span></span><br><span class="line"><span class="comment">        断言有很多，assert开头的方法</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        assertEquals(<span class="string">"1"</span>, <span class="string">"1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Ignore</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    注意 这里使用了 @Ignore 注解，在测试这个类的时候 test2() 将跳过测试</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"***  这是第二个Junit测试  ***"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -343,7 +566,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/01/Junit Test/">展开全文 >></a>
         </p>
       
 
@@ -446,71 +669,6 @@
 
 
   
-    <article id="post-用一个简单的方式判断List中是否存在重复数据" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/">用一个简单的方式判断List中是否存在重复数据</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>当然，如果你有更好的方法，可以写在这里，大家一起学习一下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">existDuplicateElements</span><span class="params">(List&lt;Object&gt; list)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == list || list.isEmpty())&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> HashSet(list).size() != list.size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>思路就是set中是不允许出现重复数据的，list转换set之后（HashSet）如果size对不上就可以说明list中肯定有重复数据了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-List删除指定元素的坑" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -579,19 +737,19 @@
 
 
   
-    <article id="post-Junit Test" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-用一个简单的方式判断List中是否存在重复数据" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/Junit Test/">Junit Test</a>
+      <a class="article-title" href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/">用一个简单的方式判断List中是否存在重复数据</a>
     </h1>
   
 
         
-        <a href="/2018/12/01/Junit Test/" class="archive-article-date">
+        <a href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/" class="archive-article-date">
   	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
@@ -599,9 +757,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>看到今天有个新同事写完代码做测试，又把原来的博客翻出来，转到github吧</p>
-<p>不废话，直接上代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JunitTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须非静态，测试用例之前执行，用注解 @Before"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须静态， 测试用例之前执行，比如连接数据库，用注解 @BeforeClass"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须非静态，测试用例之后执行，用注解 @After"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterClass</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"必须静态，测试用例之后执行，比如断开数据库连接，用注解 @AfterClass"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"***  这是第一个Junit测试  ***"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        注意，这里的断言在引包的时候一定是static的 import static org.junit.Assert.*; 断言		   失败将在Junit测试窗口中终止测试</span></span><br><span class="line"><span class="comment">        断言有很多，assert开头的方法</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        assertEquals(<span class="string">"1"</span>, <span class="string">"1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Ignore</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    注意 这里使用了 @Ignore 注解，在测试这个类的时候 test2() 将跳过测试</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"***  这是第二个Junit测试  ***"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>当然，如果你有更好的方法，可以写在这里，大家一起学习一下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">existDuplicateElements</span><span class="params">(List&lt;Object&gt; list)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == list || list.isEmpty())&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> HashSet(list).size() != list.size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>思路就是set中是不允许出现重复数据的，list转换set之后（HashSet）如果size对不上就可以说明list中肯定有重复数据了</p>
 
       
 
@@ -614,7 +772,73 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/Junit Test/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-别让 Intellij IDEA 玩弄你的项目" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/">别让 Intellij IDEA 玩弄你的项目</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我相信有很多人手贱，不停的在IDEA里设置这个设置那个，英文不好真的别瞎点，妈的，今天差点吓出翔</p>
+<p>当Intellij IDEA突然抽风，玩弄你的项目，你的项目只剩下jar包和一些自己生成的文件的时候，我相信你是蒙逼的，妈的，老子的项目呢，老子辛苦写的代码呢，我今天就是这个状态，各种设置，为这破事折腾了一个多小时，麻痹的  干。。。</p>
+<p>总结一下</p>
+<h1 id="1、关闭IDEA"><a href="#1、关闭IDEA" class="headerlink" title="1、关闭IDEA"></a>1、关闭IDEA</h1><h1 id="2-然后删除项目文件夹下的-idea文件夹"><a href="#2-然后删除项目文件夹下的-idea文件夹" class="headerlink" title="2.然后删除项目文件夹下的.idea文件夹"></a>2.然后删除项目文件夹下的.idea文件夹</h1><h1 id="3-重新用IDEA工具打开项目"><a href="#3-重新用IDEA工具打开项目" class="headerlink" title="3.重新用IDEA工具打开项目"></a>3.重新用IDEA工具打开项目</h1><p>一定是关闭IDEA而不是关掉这个项目，别想着其他项目开着只关这个，没用的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/">展开全文 >></a>
         </p>
       
 
