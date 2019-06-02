@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
-  <title>图片验证码 | sunlibin.cn 的博客</title>
+  <title>Archives | sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="servlet： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859@WebServlet(urlPatterns = &quot;/check&quot;)public class CheckServlet extends MyServlet &amp;#1">
+  <meta name="description" content="草莽出身，励志成为一名合格的Coder">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
-<meta property="og:type" content="article">
-<meta property="og:title" content="图片验证码">
-<meta property="og:url" content="https://sunlibincn.github.io/2019/04/18/图片验证码/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sunlibin.cn 的博客">
+<meta property="og:url" content="https://sunlibincn.github.io/archives/page/3/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="servlet： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859@WebServlet(urlPatterns = &quot;/check&quot;)public class CheckServlet extends MyServlet &amp;#1">
+<meta property="og:description" content="草莽出身，励志成为一名合格的Coder">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T07:24:08.128Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图片验证码">
-<meta name="twitter:description" content="servlet： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859@WebServlet(urlPatterns = &quot;/check&quot;)public class CheckServlet extends MyServlet &amp;#1">
+<meta name="twitter:title" content="sunlibin.cn 的博客">
+<meta name="twitter:description" content="草莽出身，励志成为一名合格的Coder">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -137,190 +136,241 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-图片验证码" class="article article-type-post " itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      图片验证码
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/12/01/密码正则 - JAVA版本/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/12/01/密码正则 - JAVA版本/">密码正则 - JAVA版本</a>
     </h1>
   
 
-        
-        <a href="/2019/04/18/图片验证码/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:22:22.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>servlet：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/check"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckServlet</span> <span class="keyword">extends</span> <span class="title">MyServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//  创建画布</span></span><br><span class="line">        <span class="keyword">int</span> width = <span class="number">120</span>;</span><br><span class="line">        <span class="keyword">int</span> height = <span class="number">40</span>;</span><br><span class="line">        BufferedImage bufferedImage = <span class="keyword">new</span> BufferedImage(width, height, 		 	BufferedImage.TYPE_INT_RGB);</span><br><span class="line">        <span class="comment">//  获得画笔</span></span><br><span class="line">        Graphics g = bufferedImage.getGraphics();</span><br><span class="line">        <span class="comment">//  填充背景颜色</span></span><br><span class="line">        g.setColor(Color.white);</span><br><span class="line">        g.fillRect(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">        <span class="comment">//  绘制边框</span></span><br><span class="line">        g.setColor(Color.red);</span><br><span class="line">        g.drawRect(<span class="number">0</span>, <span class="number">0</span>, width - <span class="number">1</span>, height - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//  生成随机字符</span></span><br><span class="line">        <span class="comment">//  准备数据</span></span><br><span class="line">        String data = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"</span>;</span><br><span class="line">        <span class="comment">//  准备随机对象</span></span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="comment">//  声明一个变量 保存验证码</span></span><br><span class="line">        String code = <span class="string">""</span>;</span><br><span class="line">        <span class="comment">//  书写4个随机字符</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//  设置字体</span></span><br><span class="line">            g.setFont(<span class="keyword">new</span> Font(<span class="string">"宋体"</span>, Font.BOLD, <span class="number">28</span>));</span><br><span class="line">            <span class="comment">//  设置随机颜色</span></span><br><span class="line">            g.setColor(<span class="keyword">new</span> Color(r.nextInt(<span class="number">255</span>), r.nextInt(<span class="number">255</span>), r.nextInt(<span class="number">255</span>)));</span><br><span class="line"></span><br><span class="line">            String str = data.charAt(r.nextInt(data.length())) + <span class="string">""</span>;</span><br><span class="line">            g.drawString(str, <span class="number">10</span> + i * <span class="number">28</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//  将新的字符 保存到验证码中</span></span><br><span class="line">            code = code + str;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//  绘制干扰线</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//  设置随机颜色</span></span><br><span class="line">            g.setColor(<span class="keyword">new</span> Color(r.nextInt(<span class="number">255</span>), r.nextInt(<span class="number">255</span>), r.nextInt(<span class="number">255</span>)));</span><br><span class="line"></span><br><span class="line">            g.drawLine(r.nextInt(width), r.nextInt(height), r.nextInt(width), r.nextInt(height));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  将验证码 打印到控制台</span></span><br><span class="line">        System.out.println(code);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  将验证码放到session中</span></span><br><span class="line">        request.getSession().setAttribute(<span class="string">"code_session"</span>, code);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  将画布显示在浏览器中</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ImageIO.write(bufferedImage, <span class="string">"jpg"</span>, response.getOutputStream());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>jsp:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> <span class="keyword">import</span>=<span class="string">"java.util.*"</span> pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;login&lt;/title&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"></span><br><span class="line">        <span class="function">function <span class="title">changeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">            document.getElementById(<span class="string">"img"</span>).src = <span class="string">"/web05/check?t="</span>+<span class="keyword">new</span> Date().getTime();</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=<span class="string">"/web/login"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;用户名：&lt;/td&gt;&lt;td&gt;&lt;input type="text" name="username"&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;密码：&lt;/td&gt;&lt;td&gt;&lt;input type="password" name="password"&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;验证码：&lt;/td&gt;&lt;td&gt;&lt;input type="text" name="code"&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">        &lt;!-- 通过向服务器发送请求，从服务器获取验证码数据 --&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;</span><br><span class="line">            &lt;img id=<span class="string">"img"</span> src=<span class="string">"/web05/check"</span> onclick=<span class="string">"changeCode();"</span>/&gt;</span><br><span class="line">            &lt;a style="color: red" href="#" onclick="changeCode();"&gt;换一换&lt;/a&gt;</span><br><span class="line">            &lt;span&gt;&lt;%= request.getAttribute("msg")==null?"":request.getAttribute("msg") %&gt;&lt;/span&gt;</span><br><span class="line">        &lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="submit" value="登陆"&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/alipay_get.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/WX_get.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2019/04/18/图片验证码/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2019/04/22/面试宝典 - Redis篇/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          面试宝典 - Redis篇
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/04/18/toString是如何被System.out.println调用的/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">toString是如何被System.out.println调用的</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/12/01/TCP的三次握手/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
         </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/12/01/TCP的三次握手/">TCP的三次握手</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+          
+
         </div>
-        
-    </div>
-</aside>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/12/01/设计模式 总结，内附各详解地址/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/12/01/设计模式 总结，内附各详解地址/">设计模式 总结，内附各详解地址</a>
+    </h1>
+  
 
+        <div class="article-info info-on-right">
+          
+          
 
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/12/01/List删除指定元素的坑/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/12/01/List删除指定元素的坑/">List删除指定元素的坑</a>
+    </h1>
+  
 
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/12/01/Junit Test/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/12/01/Junit Test/">Junit Test</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/12/01/html页面指定区域打印\生成图片/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/12/01/html页面指定区域打印\生成图片/">html页面指定区域打印\生成图片</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/12/01/别让 Intellij IDEA 玩弄你的项目/">别让 Intellij IDEA 玩弄你的项目</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.707Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/12/01/用一个简单的方式判断List中是否存在重复数据/">用一个简单的方式判断List中是否存在重复数据</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
   
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
 
 
@@ -344,8 +394,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

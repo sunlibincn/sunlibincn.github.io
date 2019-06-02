@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
-  <title>图片验证码 | sunlibin.cn 的博客</title>
+  <title>Elasticsearch 相关配置和问题整理 | sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="servlet： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859@WebServlet(urlPatterns = &quot;/check&quot;)public class CheckServlet extends MyServlet &amp;#1">
+  <meta name="description" content="安装 ES 和 图形化管理插件就不再废话了，随便搜一下都有很多 ES官网：http://www.elastic.co 下载对应版本解压即可 图形化管理插件：https://github.com/mobz/elasticsearch-head （需要安装node，这里不作介绍），安装请移步：https://www.jianshu.com/p/36d7f97a20cd  进入ES安装目录，测试ES是否">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图片验证码">
-<meta property="og:url" content="https://sunlibincn.github.io/2019/04/18/图片验证码/index.html">
+<meta property="og:title" content="Elasticsearch 相关配置和问题整理">
+<meta property="og:url" content="https://sunlibincn.github.io/2018/12/01/Elasticsearch 相关配置和问题整理/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="servlet： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859@WebServlet(urlPatterns = &quot;/check&quot;)public class CheckServlet extends MyServlet &amp;#1">
+<meta property="og:description" content="安装 ES 和 图形化管理插件就不再废话了，随便搜一下都有很多 ES官网：http://www.elastic.co 下载对应版本解压即可 图形化管理插件：https://github.com/mobz/elasticsearch-head （需要安装node，这里不作介绍），安装请移步：https://www.jianshu.com/p/36d7f97a20cd  进入ES安装目录，测试ES是否">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T07:24:08.128Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/elasticsearch-head.png">
+<meta property="og:image" content="http://psgsn6ti0.bkt.clouddn.com/elasticsearch-success.png">
+<meta property="og:updated_time" content="2019-06-02T09:45:53.403Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图片验证码">
-<meta name="twitter:description" content="servlet： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859@WebServlet(urlPatterns = &quot;/check&quot;)public class CheckServlet extends MyServlet &amp;#1">
+<meta name="twitter:title" content="Elasticsearch 相关配置和问题整理">
+<meta name="twitter:description" content="安装 ES 和 图形化管理插件就不再废话了，随便搜一下都有很多 ES官网：http://www.elastic.co 下载对应版本解压即可 图形化管理插件：https://github.com/mobz/elasticsearch-head （需要安装node，这里不作介绍），安装请移步：https://www.jianshu.com/p/36d7f97a20cd  进入ES安装目录，测试ES是否">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/elasticsearch-head.png">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -137,30 +140,84 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-图片验证码" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-Elasticsearch 相关配置和问题整理" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      图片验证码
+      Elasticsearch 相关配置和问题整理
     </h1>
   
 
         
-        <a href="/2019/04/18/图片验证码/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:22:22.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
+        <a href="/2018/12/01/Elasticsearch 相关配置和问题整理/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>servlet：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/check"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckServlet</span> <span class="keyword">extends</span> <span class="title">MyServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//  创建画布</span></span><br><span class="line">        <span class="keyword">int</span> width = <span class="number">120</span>;</span><br><span class="line">        <span class="keyword">int</span> height = <span class="number">40</span>;</span><br><span class="line">        BufferedImage bufferedImage = <span class="keyword">new</span> BufferedImage(width, height, 		 	BufferedImage.TYPE_INT_RGB);</span><br><span class="line">        <span class="comment">//  获得画笔</span></span><br><span class="line">        Graphics g = bufferedImage.getGraphics();</span><br><span class="line">        <span class="comment">//  填充背景颜色</span></span><br><span class="line">        g.setColor(Color.white);</span><br><span class="line">        g.fillRect(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">        <span class="comment">//  绘制边框</span></span><br><span class="line">        g.setColor(Color.red);</span><br><span class="line">        g.drawRect(<span class="number">0</span>, <span class="number">0</span>, width - <span class="number">1</span>, height - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//  生成随机字符</span></span><br><span class="line">        <span class="comment">//  准备数据</span></span><br><span class="line">        String data = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"</span>;</span><br><span class="line">        <span class="comment">//  准备随机对象</span></span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="comment">//  声明一个变量 保存验证码</span></span><br><span class="line">        String code = <span class="string">""</span>;</span><br><span class="line">        <span class="comment">//  书写4个随机字符</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//  设置字体</span></span><br><span class="line">            g.setFont(<span class="keyword">new</span> Font(<span class="string">"宋体"</span>, Font.BOLD, <span class="number">28</span>));</span><br><span class="line">            <span class="comment">//  设置随机颜色</span></span><br><span class="line">            g.setColor(<span class="keyword">new</span> Color(r.nextInt(<span class="number">255</span>), r.nextInt(<span class="number">255</span>), r.nextInt(<span class="number">255</span>)));</span><br><span class="line"></span><br><span class="line">            String str = data.charAt(r.nextInt(data.length())) + <span class="string">""</span>;</span><br><span class="line">            g.drawString(str, <span class="number">10</span> + i * <span class="number">28</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//  将新的字符 保存到验证码中</span></span><br><span class="line">            code = code + str;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//  绘制干扰线</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//  设置随机颜色</span></span><br><span class="line">            g.setColor(<span class="keyword">new</span> Color(r.nextInt(<span class="number">255</span>), r.nextInt(<span class="number">255</span>), r.nextInt(<span class="number">255</span>)));</span><br><span class="line"></span><br><span class="line">            g.drawLine(r.nextInt(width), r.nextInt(height), r.nextInt(width), r.nextInt(height));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  将验证码 打印到控制台</span></span><br><span class="line">        System.out.println(code);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  将验证码放到session中</span></span><br><span class="line">        request.getSession().setAttribute(<span class="string">"code_session"</span>, code);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  将画布显示在浏览器中</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ImageIO.write(bufferedImage, <span class="string">"jpg"</span>, response.getOutputStream());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>jsp:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> <span class="keyword">import</span>=<span class="string">"java.util.*"</span> pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;login&lt;/title&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"></span><br><span class="line">        <span class="function">function <span class="title">changeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">            document.getElementById(<span class="string">"img"</span>).src = <span class="string">"/web05/check?t="</span>+<span class="keyword">new</span> Date().getTime();</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=<span class="string">"/web/login"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;用户名：&lt;/td&gt;&lt;td&gt;&lt;input type="text" name="username"&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;密码：&lt;/td&gt;&lt;td&gt;&lt;input type="password" name="password"&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;验证码：&lt;/td&gt;&lt;td&gt;&lt;input type="text" name="code"&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">        &lt;!-- 通过向服务器发送请求，从服务器获取验证码数据 --&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;</span><br><span class="line">            &lt;img id=<span class="string">"img"</span> src=<span class="string">"/web05/check"</span> onclick=<span class="string">"changeCode();"</span>/&gt;</span><br><span class="line">            &lt;a style="color: red" href="#" onclick="changeCode();"&gt;换一换&lt;/a&gt;</span><br><span class="line">            &lt;span&gt;&lt;%= request.getAttribute("msg")==null?"":request.getAttribute("msg") %&gt;&lt;/span&gt;</span><br><span class="line">        &lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="submit" value="登陆"&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+        <p>安装 ES 和 图形化管理插件就不再废话了，随便搜一下都有很多</p>
+<p>ES官网：<strong><a href="http://www.elastic.co" target="_blank" rel="noopener">http://www.elastic.co</a></strong> 下载对应版本解压即可</p>
+<p>图形化管理插件：<strong><a href="https://github.com/mobz/elasticsearch-head" target="_blank" rel="noopener">https://github.com/mobz/elasticsearch-head</a></strong> （需要安装node，这里不作介绍），安装请移步：<strong><a href="https://www.jianshu.com/p/36d7f97a20cd" target="_blank" rel="noopener">https://www.jianshu.com/p/36d7f97a20cd</a></strong></p>
+<ul>
+<li><p>进入ES安装目录，测试ES是否正常安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh ./bin/elasticsearch</span><br></pre></td></tr></table></figure>
+<p>日志出现<strong>starting</strong>与<strong>started</strong>表示启动成功，出现<strong>127.0.0.1:9200</strong>表示默认监听端口9200</p>
+</li>
+<li><p>进入插件安装目录，测试插件是否正常</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+<p>打开浏览器，访问 127.0.0.1:9100 </p>
+<p><img src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/elasticsearch-head.png" alt="正常界面"></p>
+</li>
+</ul>
+<p>  如果没有看到绿色涂底的集群健康值，也正常，只要界面能打开，问题都不大</p>
+<ul>
+<li><p>解决连接不上ES的问题（跨域问题）</p>
+<p>停掉ES和插件的服务，进入ES安装目录，并进入config配置目录，编辑elasticsearch.yml</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi elasticsearch.yml</span><br></pre></td></tr></table></figure>
+<p>在文件底部加入两行代码（保存后退出：wq）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line">http.cors.allow-origin: <span class="string">"*"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再次检查head是否连接了ES</p>
+<ul>
+<li><p>进入ES安装目录，后台启动ES</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/elasticsearch -d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>进入head安装目录，启动head</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+<p>打开浏览器，看下是否已经正常了</p>
+</li>
+</ul>
+<ul>
+<li><p>配置集群（先停掉ES和head）</p>
+<ul>
+<li><p>进入ES下config目录：修改 elasticsearch.yml</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  集群名称</span></span><br><span class="line">cluster.name: ***(这里主节点名称可以修改)</span><br><span class="line"><span class="comment">#  master名称</span></span><br><span class="line">node.name: master</span><br><span class="line">node.master: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">network.host: 127.0.0.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在ES目录下新建一个目录 es_slave</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir es_slave</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在es_slave下放一个ES的安装包（之前下载的就可以），解压之后拷贝两份并重新命名成：es_slave1 \ es_slave2</p>
+</li>
+<li><p>分别修改 es_slave1 和 es_slave2的配置：elasticsearch.yml</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: xxx(建议和主节点名称相同)</span><br><span class="line">node.name: slave1 （子节点名称，es_slave2 比如可以是：slave1）</span><br><span class="line"></span><br><span class="line">network.host: 127.0.0.1</span><br><span class="line">http.port: 9201（es_slave2 比如可以是：9202）</span><br><span class="line"></span><br><span class="line">discovery.zen.ping.unicast.hosts: [<span class="string">"127.0.0.1"</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动所有ES节点，注意，这里先启动的节点会被默认当成主节点，建议先启动 master 后启动 slave1、slave2</p>
+</li>
+<li><p>浏览器 127.0.0.1:9100 查看服务</p>
+<p><img src="http://psgsn6ti0.bkt.clouddn.com/elasticsearch-success.png" alt="正常服务界面"></p>
+</li>
+</ul>
+</li>
+</ul>
 
       
 
@@ -250,7 +307,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2019/04/18/图片验证码/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2018/12/01/Elasticsearch 相关配置和问题整理/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -264,18 +321,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/22/面试宝典 - Redis篇/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/01/Hexo + GitHub pages/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          面试宝典 - Redis篇
+          Hexo + GitHub pages
         
       </div>
     </a>
   
   
-    <a href="/2019/04/18/toString是如何被System.out.println调用的/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">toString是如何被System.out.println调用的</div>
+    <a href="/2018/12/01/位运算的权限实践/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">位运算的权限实践</div>
       <i class="icon-circle-right"></i>
     </a>
   

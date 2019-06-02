@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
   <title>日常开发小技巧-持续更新 | sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分页功能中 LIMIT(num1,num2)，num1的公式：（当前页数 - 1）* 每页显示多少条  数字转字符串：int a = 10;  a + “” 可快速得到字符串，无需转型;  整数相除不像舍去小数点：int a = 10,b = 3; a * 1.0 / b 可得到double值，无需转型">
+  <meta name="description" content="分页功能中 LIMIT(num1,num2)，num1的公式：（当前页数 - 1）* 每页显示多少条  1int num1 = (currentPage - 1) * pageSize;  数字转字符串：int a = 10;  a + “” 可快速得到字符串，无需转型;  123int a = 10;// 快速得到一个值为 10 的字符串String str = a + &quot;&quot;;  整数相除不像">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="日常开发小技巧-持续更新">
 <meta property="og:url" content="https://sunlibincn.github.io/2019/04/18/日常开发小技巧-持续更新/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="分页功能中 LIMIT(num1,num2)，num1的公式：（当前页数 - 1）* 每页显示多少条  数字转字符串：int a = 10;  a + “” 可快速得到字符串，无需转型;  整数相除不像舍去小数点：int a = 10,b = 3; a * 1.0 / b 可得到double值，无需转型">
+<meta property="og:description" content="分页功能中 LIMIT(num1,num2)，num1的公式：（当前页数 - 1）* 每页显示多少条  1int num1 = (currentPage - 1) * pageSize;  数字转字符串：int a = 10;  a + “” 可快速得到字符串，无需转型;  123int a = 10;// 快速得到一个值为 10 的字符串String str = a + &quot;&quot;;  整数相除不像">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T07:16:00.132Z">
+<meta property="og:updated_time" content="2019-04-22T12:08:28.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日常开发小技巧-持续更新">
-<meta name="twitter:description" content="分页功能中 LIMIT(num1,num2)，num1的公式：（当前页数 - 1）* 每页显示多少条  数字转字符串：int a = 10;  a + “” 可快速得到字符串，无需转型;  整数相除不像舍去小数点：int a = 10,b = 3; a * 1.0 / b 可得到double值，无需转型">
+<meta name="twitter:description" content="分页功能中 LIMIT(num1,num2)，num1的公式：（当前页数 - 1）* 每页显示多少条  1int num1 = (currentPage - 1) * pageSize;  数字转字符串：int a = 10;  a + “” 可快速得到字符串，无需转型;  123int a = 10;// 快速得到一个值为 10 的字符串String str = a + &quot;&quot;;  整数相除不像">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -158,13 +158,22 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li><p>分页功能中 LIMIT(num1,num2)，num1的公式：（当前页数 - 1）* 每页显示多少条</p>
-</li>
-<li><p>数字转字符串：int a = 10;  a + “” 可快速得到字符串，无需转型;</p>
-</li>
-<li><p>整数相除不像舍去小数点：int a = 10,b = 3; a * 1.0 / b 可得到double值，无需转型</p>
-</li>
+<li>分页功能中 LIMIT(num1,num2)，num1的公式：（当前页数 - 1）* 每页显示多少条</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num1 = (currentPage - <span class="number">1</span>) * pageSize;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数字转字符串：int a = 10;  a + “” 可快速得到字符串，无需转型;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="comment">// 快速得到一个值为 10 的字符串</span></span><br><span class="line">String str = a + <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>整数相除不像舍去小数点：int a = 10,b = 3; a * 1.0 / b 可得到double值，无需转型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="comment">// 快速得到一个值为 10.0 的 Double 类型</span></span><br><span class="line"><span class="keyword">int</span> b = a * <span class="number">1.0</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>java实体类POJO，类属性成员变量的类型全部使用包装类，因为包装类初始值都是bull，方便以后判断</li>
+<li>jdk的新特性中，如果是double类型，在赋值时如果没有小数可以只写一个点：double num = 100.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> num1 = <span class="number">888.0</span>;</span><br><span class="line"><span class="keyword">double</span> num2 = <span class="number">888</span>.;</span><br></pre></td></tr></table></figure>
 
       
 
