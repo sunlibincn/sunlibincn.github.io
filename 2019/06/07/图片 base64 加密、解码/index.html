@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
-  <title>Archives: 2019/4 | sunlibin.cn 的博客</title>
+  <title>图片 base64 加密、解码 | sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="草莽出身，励志成为一名合格的Coder">
+  <meta name="description" content="加密1234567891011121314151617181920212223242526272829303132/** * 加密 * * @Description: 将base64编码字符串转换为图片 * @Author:  * @CreateTime:  * @param imgStr base64编码字符串 * @param path 图片路径-具体到文件 * @return*/public">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
-<meta property="og:type" content="website">
-<meta property="og:title" content="sunlibin.cn 的博客">
-<meta property="og:url" content="https://sunlibincn.github.io/archives/2019/04/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片 base64 加密、解码">
+<meta property="og:url" content="https://sunlibincn.github.io/2019/06/07/图片 base64 加密、解码/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="草莽出身，励志成为一名合格的Coder">
+<meta property="og:description" content="加密1234567891011121314151617181920212223242526272829303132/** * 加密 * * @Description: 将base64编码字符串转换为图片 * @Author:  * @CreateTime:  * @param imgStr base64编码字符串 * @param path 图片路径-具体到文件 * @return*/public">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-07T14:46:01.641Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sunlibin.cn 的博客">
-<meta name="twitter:description" content="草莽出身，励志成为一名合格的Coder">
+<meta name="twitter:title" content="图片 base64 加密、解码">
+<meta name="twitter:description" content="加密1234567891011121314151617181920212223242526272829303132/** * 加密 * * @Description: 将base64编码字符串转换为图片 * @Author:  * @CreateTime:  * @param imgStr base64编码字符串 * @param path 图片路径-具体到文件 * @return*/public">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -136,238 +137,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-图片 base64 加密、解码" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      图片 base64 加密、解码
+    </h1>
+  
+
+        
+        <a href="/2019/06/07/图片 base64 加密、解码/" class="archive-article-date">
+  	<time datetime="2019-06-07T14:38:28.803Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 加密</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将base64编码字符串转换为图片</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateTime</span>: </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> imgStr base64编码字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> path 图片路径-具体到文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">generateImage</span><span class="params">(String imgStr, String path)</span> </span>&#123;</span><br><span class="line">　　<span class="keyword">if</span> (imgStr == <span class="keyword">null</span>)</span><br><span class="line">　　　　<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">　　BASE64Decoder decoder = <span class="keyword">new</span> BASE64Decoder();</span><br><span class="line">　　<span class="keyword">try</span> &#123;</span><br><span class="line">　　　　<span class="comment">// 解密</span></span><br><span class="line">　　　　<span class="keyword">byte</span>[] b = decoder.decodeBuffer(imgStr);</span><br><span class="line">　　　　<span class="comment">// 处理数据</span></span><br><span class="line">　　　　<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.length; ++i) &#123;</span><br><span class="line">　　　　　　<span class="keyword">if</span> (b[i] &lt; <span class="number">0</span>) &#123;</span><br><span class="line">　　　　　　　　b[i] += <span class="number">256</span>;</span><br><span class="line">　　　　　　&#125;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　OutputStream out = <span class="keyword">new</span> FileOutputStream(path);</span><br><span class="line">　　　　out.write(b);</span><br><span class="line">　　　　out.flush();</span><br><span class="line">　　　　out.close();</span><br><span class="line">　　　　<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">　　&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">　　　　<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 解码</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 根据图片地址转换为base64编码字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateTime</span>: </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getImageStr</span><span class="params">(String imgFile)</span> </span>&#123;</span><br><span class="line">    InputStream inputStream = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">byte</span>[] data = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        inputStream = <span class="keyword">new</span> FileInputStream(imgFile);</span><br><span class="line">        data = <span class="keyword">new</span> <span class="keyword">byte</span>[inputStream.available()];</span><br><span class="line">        inputStream.read(data);</span><br><span class="line">        inputStream.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 加密</span></span><br><span class="line">    BASE64Encoder encoder = <span class="keyword">new</span> BASE64Encoder();</span><br><span class="line">    <span class="keyword">return</span> encoder.encode(data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试示例</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String strImg = getImageStr(<span class="string">"F:/86619-106.jpg"</span>);</span><br><span class="line">    System.out.println(strImg);</span><br><span class="line">    generateImage(strImg, <span class="string">"F:/86619-107.jpg"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/alipay_get.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/WX_get.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/23/spring的常用注解/" class="archive-article-date">
-  	<time datetime="2019-04-23T09:47:40.663Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/23/spring的常用注解/">spring 常用注解、xml配置标签</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2019/06/07/图片 base64 加密、解码/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/图片验证码/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:22:22.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/06/07/一个简单的时间过期校验/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          一个简单的时间过期校验
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/07/git速查表/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git速查表</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/图片验证码/">图片验证码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#加密"><span class="toc-number">1.</span> <span class="toc-text">加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解码"><span class="toc-number">2.</span> <span class="toc-text">解码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">3.</span> <span class="toc-text">测试</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/toString是如何被System.out.println调用的/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:20:17.599Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/toString是如何被System.out.println调用的/">toString是如何被System.out.println调用的</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/mysql 从单一的表中随机取n条数据/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:17:35.854Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/mysql 从单一的表中随机取n条数据/">mysql 从单一的表中随机取n条数据</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/equals 和 ==/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:03:32.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/equals 和 ==/">equals 和 ==</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/输入流遇到的坑/" class="archive-article-date">
-  	<time datetime="2019-04-18T06:59:55.880Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/输入流遇到的坑/">输入流遇到的坑</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/日常开发小技巧-持续更新/" class="archive-article-date">
-  	<time datetime="2019-04-18T06:57:00.154Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/日常开发小技巧-持续更新/">日常开发小技巧-持续更新</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/并发和并行的概念/" class="archive-article-date">
-  	<time datetime="2019-04-18T06:46:27.383Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/并发和并行的概念/">并发和并行的概念 \ 进程和线程的概念以及联系</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -390,8 +343,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

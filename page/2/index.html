@@ -138,140 +138,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-equals 和 ==" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/18/equals 和 ==/">equals 和 ==</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/18/equals 和 ==/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:03:32.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>equals方法在没有重写的情况下，默认和object下的equals方法一样，会比较对象的地址值，一旦重写，将按照调用者本身对象中equals方法执行，这里有一个特殊情况，就是String，String这个类本身就已经重写了equals方法，所以，在用stringA.equals（stringB）时比较的是A和B的值不再是地址值。</p>
-<p>‘==’这个东西在比较基础数据类型的时候都是比较值，一旦出现引用数据类型将比较对象的地址值</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/18/equals 和 ==/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-输入流遇到的坑" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/18/输入流遇到的坑/">输入流遇到的坑</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/18/输入流遇到的坑/" class="archive-article-date">
-  	<time datetime="2019-04-18T06:59:55.880Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>code1：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"demo.txt"</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            fileOutputStream.write((<span class="string">"java"</span> + i + <span class="string">"\n"</span>).getBytes());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>code2：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (FileWriter fileWriter = <span class="keyword">new</span> FileWriter(<span class="string">"demo.txt"</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            fileWriter.write(<span class="string">"xxx"</span> + i + <span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>首先，这两个方法都可以正确执行，java8的新特性，在try后面跟个括号，括号里的声明的流（以上code1是字节流  code2是字符流）在代码执行完成后是可以自动关闭流的</p>
-<p>再看下面三个代码：</p>
-<p>code1：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">    String filePath = <span class="string">"score.txt"</span>;</span><br><span class="line">    <span class="keyword">try</span> (FileInputStream fileInputStream = <span class="keyword">new</span> FileInputStream(filePath)) &#123;</span><br><span class="line">        properties.load(fileInputStream);</span><br><span class="line">        <span class="keyword">if</span> (properties.containsKey(<span class="string">"lisi"</span>)) &#123;</span><br><span class="line">            properties.setProperty(<span class="string">"lisi"</span>, <span class="string">"xxx"</span>);</span><br><span class="line">            properties.store(<span class="keyword">new</span> FileWriter(filePath), <span class="string">"ceshi"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>code2：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String filePath = <span class="string">"score.txt"</span>;</span><br><span class="line">    <span class="keyword">try</span> (FileWriter fileWriter = <span class="keyword">new</span> FileWriter(filePath)) &#123;</span><br><span class="line">        Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">        properties.load(<span class="keyword">new</span> FileReader(filePath));</span><br><span class="line">        <span class="keyword">if</span> (properties.containsKey(<span class="string">"lisi"</span>)) &#123;</span><br><span class="line">            properties.setProperty(<span class="string">"lisi"</span>, <span class="string">"xxx"</span>);</span><br><span class="line">            Set&lt;String&gt; propertyNames = properties.stringPropertyNames();</span><br><span class="line">            <span class="keyword">for</span> (String propertyName : propertyNames) &#123;</span><br><span class="line">                fileWriter.write(propertyName + <span class="string">"="</span> + properties.getProperty(propertyName) + <span class="string">"\r"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>code3：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String filePath = <span class="string">"score.txt"</span>;</span><br><span class="line">    FileWriter fileWriter = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">        properties.load(<span class="keyword">new</span> FileReader(filePath));</span><br><span class="line">        <span class="keyword">if</span> (properties.containsKey(<span class="string">"lisi"</span>)) &#123;</span><br><span class="line">            properties.setProperty(<span class="string">"lisi"</span>, <span class="string">"xxx"</span>);</span><br><span class="line">            Set&lt;String&gt; propertyNames = properties.stringPropertyNames();</span><br><span class="line">            fileWriter = <span class="keyword">new</span> FileWriter(filePath);</span><br><span class="line">            <span class="keyword">for</span> (String propertyName : propertyNames) &#123;</span><br><span class="line">                fileWriter.write(propertyName + <span class="string">"="</span> + properties.getProperty(propertyName) + <span class="string">"\r"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fileWriter.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以上三个代码都要实现同样一个功能，读score.txt，检查如果有一个key是lisi，就把这个属性值改成xxx<br>那么问题来了，code1、code3可以正常完成工作，但是code2就不行，这代码看着很奇怪，但其实是个很简单的概念性问题</p>
-<font color="red">关键点：FileWriter fileWriter = new FileWriter(filePath)，在没有给到true追加的时候，执行这行代码，其实文件就已经被清空了，后面自然读不到任何内容，如果code2的代码改成：FileWriter fileWriter = new FileWriter(filePath， true) 就不会有任何问题了</font>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/18/输入流遇到的坑/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-日常开发小技巧-持续更新" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -562,19 +428,19 @@
 
 
   
-    <article id="post-Elasticsearch 相关配置和问题整理" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-TCP的三次握手" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/Elasticsearch 相关配置和问题整理/">Elasticsearch 相关配置和问题整理</a>
+      <a class="article-title" href="/2018/12/01/TCP的三次握手/">TCP的三次握手</a>
     </h1>
   
 
         
-        <a href="/2018/12/01/Elasticsearch 相关配置和问题整理/" class="archive-article-date">
+        <a href="/2018/12/01/TCP的三次握手/" class="archive-article-date">
   	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
@@ -582,64 +448,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>安装 ES 和 图形化管理插件就不再废话了，随便搜一下都有很多</p>
-<p>ES官网：<strong><a href="http://www.elastic.co" target="_blank" rel="noopener">http://www.elastic.co</a></strong> 下载对应版本解压即可</p>
-<p>图形化管理插件：<strong><a href="https://github.com/mobz/elasticsearch-head" target="_blank" rel="noopener">https://github.com/mobz/elasticsearch-head</a></strong> （需要安装node，这里不作介绍），安装请移步：<strong><a href="https://www.jianshu.com/p/36d7f97a20cd" target="_blank" rel="noopener">https://www.jianshu.com/p/36d7f97a20cd</a></strong></p>
-<ul>
-<li><p>进入ES安装目录，测试ES是否正常安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh ./bin/elasticsearch</span><br></pre></td></tr></table></figure>
-<p>日志出现<strong>starting</strong>与<strong>started</strong>表示启动成功，出现<strong>127.0.0.1:9200</strong>表示默认监听端口9200</p>
-</li>
-<li><p>进入插件安装目录，测试插件是否正常</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
-<p>打开浏览器，访问 127.0.0.1:9100 </p>
-<p><img src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/elasticsearch-head.png" alt="正常界面"></p>
-</li>
-</ul>
-<p>  如果没有看到绿色涂底的集群健康值，也正常，只要界面能打开，问题都不大</p>
-<ul>
-<li><p>解决连接不上ES的问题（跨域问题）</p>
-<p>停掉ES和插件的服务，进入ES安装目录，并进入config配置目录，编辑elasticsearch.yml</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi elasticsearch.yml</span><br></pre></td></tr></table></figure>
-<p>在文件底部加入两行代码（保存后退出：wq）：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line">http.cors.allow-origin: <span class="string">"*"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再次检查head是否连接了ES</p>
-<ul>
-<li><p>进入ES安装目录，后台启动ES</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/elasticsearch -d</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>进入head安装目录，启动head</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
-<p>打开浏览器，看下是否已经正常了</p>
-</li>
-</ul>
-<ul>
-<li><p>配置集群（先停掉ES和head）</p>
-<ul>
-<li><p>进入ES下config目录：修改 elasticsearch.yml</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  集群名称</span></span><br><span class="line">cluster.name: ***(这里主节点名称可以修改)</span><br><span class="line"><span class="comment">#  master名称</span></span><br><span class="line">node.name: master</span><br><span class="line">node.master: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">network.host: 127.0.0.1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在ES目录下新建一个目录 es_slave</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir es_slave</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在es_slave下放一个ES的安装包（之前下载的就可以），解压之后拷贝两份并重新命名成：es_slave1 \ es_slave2</p>
-</li>
-<li><p>分别修改 es_slave1 和 es_slave2的配置：elasticsearch.yml</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: xxx(建议和主节点名称相同)</span><br><span class="line">node.name: slave1 （子节点名称，es_slave2 比如可以是：slave1）</span><br><span class="line"></span><br><span class="line">network.host: 127.0.0.1</span><br><span class="line">http.port: 9201（es_slave2 比如可以是：9202）</span><br><span class="line"></span><br><span class="line">discovery.zen.ping.unicast.hosts: [<span class="string">"127.0.0.1"</span>]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动所有ES节点，注意，这里先启动的节点会被默认当成主节点，建议先启动 master 后启动 slave1、slave2</p>
-</li>
-<li><p>浏览器 127.0.0.1:9100 查看服务</p>
-<p><img src="http://psgsn6ti0.bkt.clouddn.com/elasticsearch-success.png" alt="正常服务界面"></p>
-</li>
-</ul>
-</li>
-</ul>
+        <p>TCP保证数据安全传输，这个安全传输怎么说，我认为很简单，就是保证数据完整一致</p>
+<p>因为在网络数据传输过程中数据通常都不会很小，而传输本身对大小是有限制的，这就需要对数据进行切割，切割之后传输过程就有一次变成n次，怎么保证数据在传输中不丢失，这就是TCP的责任</p>
+<p>我理解的不多，这次只说说三次握手</p>
+<p>什么是三次握手呢，我举个特别简单的例子</p>
+<p>这就好比是绿林好汉做买卖，双方是要喊黑话的，土豆说『天王盖地虎』 地瓜马上要接着说『宝塔镇河妖』，一言不合拖裤子亮枪</p>
+<p>TCP的握手也有黑话，就是falg标志『SYN』和『ACK』，我带着数据和SYN请求你（第一次），你看到时候不会立即处理，要传回给我数据和SYN同时加上你的ACK（第二次），我收到了数据、SYN、ACK三样一样不差，我拿出我的SYN，只带着数据和你的ACK再请求你（第三次）这时候你才开始接受数据，这就是三次握手</p>
+<p>如果说这三次握手中有其中一个环节对不上，这买卖不做了，我重来，直到黑话都对了为止</p>
+<p>说的有点粗糙，理解的也有点浅，凑活看看吧</p>
 
       
 
@@ -652,7 +468,181 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/Elasticsearch 相关配置和问题整理/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/01/TCP的三次握手/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-一个面试题 &amp;&amp;、&amp;和||、|" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/一个面试题 &&、&和||、|/">一个面试题 &amp;&amp;、&amp;和||、|</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/一个面试题 &&、&和||、|/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><font color="red">简单，但是比较重要</font></p>
+<p><font color="red">首先</font>，这4个运算符都是表示逻辑运算<br>-逻辑 与 (全部为 true 才返回 true)</p>
+<pre><code>- &amp;&amp; （短路模式）多个条件下，执行过程中如果有一个条件判断出现false，之后的条件都不会再判断，直接返回false
+- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个false，就返回false
+</code></pre><p>-逻辑 或 (只要有一个为 true 就返回 true)</p>
+<pre><code>- 【||】 （短路模式）多个条件下，执行过程中如果有一个条件判断出现true，之后的条件都不会再判断，直接返回true
+- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个true，就返回true
+</code></pre><p><font color="red">这里有一个系统性能的问题，短路与和短路或会相对节省一点点开销</font></p>
+<p><font color="red">其次</font>，&amp; 和 | 还可以进行位运算</p>
+<ul>
+<li>位 与 （有一个0就是0）<ul>
+<li>&amp; 按位与运算，两个数据位比较，如果有一个是0，结果就是0，全为1时，结果才是1</li>
+</ul>
+</li>
+<li>位 或 （有一个1就是1）<ul>
+<li>『|』 按位或运算，两个数据位比较，如果有一个是1，结果就是1</li>
+</ul>
+</li>
+</ul>
+<p>位运算资料：<a href="http://blog.csdn.net/xiaochunyong/article/details/7748713" target="_blank" rel="noopener">http://blog.csdn.net/xiaochunyong/article/details/7748713</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/一个面试题 &&、&和||、|/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-设计模式 总结，内附各详解地址" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/设计模式 总结，内附各详解地址/">设计模式 总结，内附各详解地址</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/设计模式 总结，内附各详解地址/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以下是学习过程中查询的资料,别人总结的资料,比较容易理解(站在各位巨人的肩膀上,望博主勿究)<br>设计模式分为三种类型来归类 创建型 、结构型 、行为型</p>
+<h1 id="创建型"><a href="#创建型" class="headerlink" title="创建型"></a>创建型</h1><ol>
+<li>抽象工厂模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/03/28/2418836.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/03/28/2418836.html</a></li>
+<li>工厂方法 <a href="http://www.cnblogs.com/java-my-life/archive/2012/03/25/2416227.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/03/25/2416227.html</a></li>
+<li>建造者模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/07/2433939.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/07/2433939.html</a></li>
+<li>原型模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/11/2439387.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/11/2439387.html</a></li>
+<li>单态模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/03/31/2425631.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/03/31/2425631.html</a></li>
+</ol>
+<h1 id="结构型"><a href="#结构型" class="headerlink" title="结构型"></a>结构型</h1><ol>
+<li>适配器模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/13/2442795.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/13/2442795.html</a></li>
+<li>桥接模式 <a href="http://blog.csdn.net/jason0539/article/details/22568865" target="_blank" rel="noopener">http://blog.csdn.net/jason0539/article/details/22568865</a></li>
+<li>组合模式 <a href="http://blog.csdn.net/jason0539/article/details/22642281" target="_blank" rel="noopener">http://blog.csdn.net/jason0539/article/details/22642281</a></li>
+<li>外观模式 <a href="http://blog.csdn.net/jason0539/article/details/227753110" target="_blank" rel="noopener">http://blog.csdn.net/jason0539/article/details/227753110</a></li>
+<li>装饰者模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html</a></li>
+<li>享元模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/26/2468499.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/26/2468499.html</a></li>
+<li>代理模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/04/23/2466712.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/04/23/2466712.html</a></li>
+</ol>
+<h1 id="行为型"><a href="#行为型" class="headerlink" title="行为型"></a>行为型</h1><ol>
+<li>责任链模式 <a href="http://blog.csdn.net/zhouyong0/article/details/7909456" target="_blank" rel="noopener">http://blog.csdn.net/zhouyong0/article/details/7909456</a></li>
+<li>命令模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/01/2526972.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/01/2526972.html</a></li>
+<li>解释器模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/19/2552617.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/19/2552617.html</a></li>
+<li>迭代模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/05/22/2511506.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/05/22/2511506.html</a></li>
+<li>中介者模式 <a href="http://blog.csdn.net/chenhuade85/article/details/8141831" target="_blank" rel="noopener">http://blog.csdn.net/chenhuade85/article/details/8141831</a></li>
+<li>备忘录模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/06/2534942.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/06/2534942.html</a></li>
+<li>观察者模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html</a></li>
+<li>状态模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/08/2538146.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/08/2538146.html</a></li>
+<li>策略模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/05/10/2491891.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/05/10/2491891.html</a></li>
+<li>模板方法模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/05/14/2495235.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/05/14/2495235.html</a></li>
+<li>访问者模式 <a href="http://www.cnblogs.com/java-my-life/archive/2012/06/14/2545381.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/06/14/2545381.html</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/设计模式 总结，内附各详解地址/">展开全文 >></a>
         </p>
       
 
@@ -786,88 +776,6 @@
 
 
   
-    <article id="post-一个面试题 &amp;&amp;、&amp;和||、|" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/一个面试题 &&、&和||、|/">一个面试题 &amp;&amp;、&amp;和||、|</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/01/一个面试题 &&、&和||、|/" class="archive-article-date">
-  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><font color="red">简单，但是比较重要</font></p>
-<p><font color="red">首先</font>，这4个运算符都是表示逻辑运算<br>-逻辑 与 (全部为 true 才返回 true)</p>
-<pre><code>- &amp;&amp; （短路模式）多个条件下，执行过程中如果有一个条件判断出现false，之后的条件都不会再判断，直接返回false
-- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个false，就返回false
-</code></pre><p>-逻辑 或 (只要有一个为 true 就返回 true)</p>
-<pre><code>- 【||】 （短路模式）多个条件下，执行过程中如果有一个条件判断出现true，之后的条件都不会再判断，直接返回true
-- &amp; （全条件判断模式）多个条件下，执行所有条件判断，如果有一个true，就返回true
-</code></pre><p><font color="red">这里有一个系统性能的问题，短路与和短路或会相对节省一点点开销</font></p>
-<p><font color="red">其次</font>，&amp; 和 | 还可以进行位运算</p>
-<ul>
-<li>位 与 （有一个0就是0）<ul>
-<li>&amp; 按位与运算，两个数据位比较，如果有一个是0，结果就是0，全为1时，结果才是1</li>
-</ul>
-</li>
-<li>位 或 （有一个1就是1）<ul>
-<li>『|』 按位或运算，两个数据位比较，如果有一个是1，结果就是1</li>
-</ul>
-</li>
-</ul>
-<p>位运算资料：<a href="http://blog.csdn.net/xiaochunyong/article/details/7748713" target="_blank" rel="noopener">http://blog.csdn.net/xiaochunyong/article/details/7748713</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/一个面试题 &&、&和||、|/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-RESTful 重新理解一下" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -923,6 +831,71 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/01/RESTful 重新理解一下/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-密码正则 - JAVA版本" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/密码正则 - JAVA版本/">密码正则 - JAVA版本</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/01/密码正则 - JAVA版本/" class="archive-article-date">
+  	<time datetime="2018-11-30T16:06:35.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>直接看代码  不废话</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String newPwd = controller.getPara(<span class="string">"newPassword"</span>);</span><br><span class="line"><span class="comment">// 判断密码是否包含数字：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> i = newPwd.matches(<span class="string">".*\\d+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码是否包含字母：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> j = newPwd.matches(<span class="string">".*[a-zA-Z]+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码是否包含特殊符号(~!@#$%^&amp;*()_+|&lt;&gt;,.?/:;'[]&#123;&#125;\)：包含返回1，不包含返回0</span></span><br><span class="line"><span class="keyword">int</span> k = newPwd.matches(<span class="string">".*[~!@#$%^&amp;*()_+|&lt;&gt;,.?/:;\\[\\]&#123;&#125;]+.*"</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 判断密码长度是否在6-16位</span></span><br><span class="line"><span class="keyword">int</span> l = newPwd.length();</span><br><span class="line"><span class="comment">// 判断密码中是否包含用户名</span></span><br><span class="line"><span class="keyword">boolean</span> contains = newPwd.contains(user);</span><br><span class="line"><span class="keyword">if</span> (i + j + k &lt; <span class="number">2</span> || l &lt; <span class="number">6</span> || l &gt; <span class="number">16</span> || contains) &#123;</span><br><span class="line">    addError(ERROR_MSG, <span class="string">"密码格式错误，不能包含用户名，长度 6-16 位，必须包括字母、数字、特殊符号(单、双引号除外)"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转载自：<a href="http://www.cnblogs.com/goodcheap/p/6051833.html" target="_blank" rel="noopener">http://www.cnblogs.com/goodcheap/p/6051833.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/01/密码正则 - JAVA版本/">展开全文 >></a>
         </p>
       
 

@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
-  <title>Archives: 2019/4 | sunlibin.cn 的博客</title>
+  <title>JFinal CaptchaRender图型验证码的又一个实现。 | sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="草莽出身，励志成为一名合格的Coder">
+  <meta name="description" content="非常抱歉，这片转载地址我真的不记得了，因为在我的印象笔记里躺着，当时是没有记录的，对不起作者，但是我希望放到我的博客中，正文如下： 基于jfinal源代码中的com.jfinal.ext.render.CaptchaRender改写而来。同时参考了@27号 代码 做了以下改变： 1）去掉高度和宽度设定，改为高度固定，宽度依据字符个数自动计算。 2）默认对大小写不敏感。 3）验证码及其md5散列由渲">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
-<meta property="og:type" content="website">
-<meta property="og:title" content="sunlibin.cn 的博客">
-<meta property="og:url" content="https://sunlibincn.github.io/archives/2019/04/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JFinal CaptchaRender图型验证码的又一个实现。">
+<meta property="og:url" content="https://sunlibincn.github.io/2019/06/07/JFinal CaptchaRender图型验证码的又一个实现/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="草莽出身，励志成为一名合格的Coder">
+<meta property="og:description" content="非常抱歉，这片转载地址我真的不记得了，因为在我的印象笔记里躺着，当时是没有记录的，对不起作者，但是我希望放到我的博客中，正文如下： 基于jfinal源代码中的com.jfinal.ext.render.CaptchaRender改写而来。同时参考了@27号 代码 做了以下改变： 1）去掉高度和宽度设定，改为高度固定，宽度依据字符个数自动计算。 2）默认对大小写不敏感。 3）验证码及其md5散列由渲">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-07T14:58:34.820Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sunlibin.cn 的博客">
-<meta name="twitter:description" content="草莽出身，励志成为一名合格的Coder">
+<meta name="twitter:title" content="JFinal CaptchaRender图型验证码的又一个实现。">
+<meta name="twitter:description" content="非常抱歉，这片转载地址我真的不记得了，因为在我的印象笔记里躺着，当时是没有记录的，对不起作者，但是我希望放到我的博客中，正文如下： 基于jfinal源代码中的com.jfinal.ext.render.CaptchaRender改写而来。同时参考了@27号 代码 做了以下改变： 1）去掉高度和宽度设定，改为高度固定，宽度依据字符个数自动计算。 2）默认对大小写不敏感。 3）验证码及其md5散列由渲">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -136,238 +137,195 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JFinal CaptchaRender图型验证码的又一个实现" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JFinal CaptchaRender图型验证码的又一个实现。
+    </h1>
+  
+
+        
+        <a href="/2019/06/07/JFinal CaptchaRender图型验证码的又一个实现/" class="archive-article-date">
+  	<time datetime="2019-06-07T14:53:11.596Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>非常抱歉，这片转载地址我真的不记得了，因为在我的印象笔记里躺着，当时是没有记录的，对不起作者，但是我希望放到我的博客中，正文如下：</p>
+<p>基于jfinal源代码中的com.jfinal.ext.render.CaptchaRender改写而来。同时参考了@27号 <a href="http://my.oschina.net/wen3062/blog/97501" target="_blank" rel="noopener">代码</a></p>
+<p>做了以下改变：</p>
+<p>1）去掉高度和宽度设定，改为高度固定，宽度依据字符个数自动计算。</p>
+<p>2）默认对大小写不敏感。</p>
+<p>3）验证码及其md5散列由渲染时声称变为初始化时生成。</p>
+<p>4）添加获取md5散列的方法。</p>
+<p>基本思路：</p>
+<p>CaptchaRender 初始化时同时生成验证码以及md5散列后的验证码，CaptchaRender添加一个方法可以i获取到md5散列后的验证码，这个md5散列后的验证码的由调用方法保存，想存哪里就存哪里，session，cooki，分布式cache中都行，这个md5散列后的验证码也可以发给客户端，通过MD5.js 来进行浏览器端的验证码校验，控制权交给调用方。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jfinal.ext.render;</span><br><span class="line"><span class="keyword">import</span> java.awt.Color;</span><br><span class="line"><span class="keyword">import</span> java.awt.Font;</span><br><span class="line"><span class="keyword">import</span> java.awt.Graphics;</span><br><span class="line"><span class="keyword">import</span> java.awt.image.BufferedImage;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> javax.imageio.ImageIO;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletOutputStream;</span><br><span class="line"><span class="keyword">import</span> com.jfinal.kit.StringKit;</span><br><span class="line"><span class="keyword">import</span> com.jfinal.render.Render;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证码Render，这个验证码Render在构造函数里就已经创建好了随机码以及md5散列后的随机码。</span></span><br><span class="line"><span class="comment"> * 调用方式如下：</span></span><br><span class="line"><span class="comment"> * CaptchaRender captchaRender = new CaptchaRender();</span></span><br><span class="line"><span class="comment"> * String md5RandonCode = captchaRender.getMd5RandonCode();</span></span><br><span class="line"><span class="comment"> * 保存md5RandonCode到session、cookie或者其他地方</span></span><br><span class="line"><span class="comment"> * render(captchaRender);</span></span><br><span class="line"><span class="comment"> * 基于JFinal的版本修改。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CaptchaRender</span> <span class="keyword">extends</span> <span class="title">Render</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">7599510915228560611L</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 随机码生成字典</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String[] strArr = &#123;<span class="string">"3"</span>, <span class="string">"4"</span>, <span class="string">"5"</span>, <span class="string">"6"</span>, <span class="string">"7"</span>, <span class="string">"8"</span>, <span class="string">"9"</span>, <span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>, <span class="string">"D"</span>, <span class="string">"E"</span>, <span class="string">"F"</span>, <span class="string">"G"</span>, <span class="string">"H"</span>, <span class="string">"J"</span>, <span class="string">"K"</span>, <span class="string">"M"</span>, <span class="string">"N"</span>, <span class="string">"P"</span>, <span class="string">"Q"</span>, <span class="string">"R"</span>, <span class="string">"S"</span>, <span class="string">"T"</span>, <span class="string">"U"</span>, <span class="string">"V"</span>, <span class="string">"W"</span>, <span class="string">"X"</span>, <span class="string">"Y"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 默认存储时使用的key,将md5散列后的随机码保存至session，cookie时使用。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_CAPTCHA_MD5_CODE_KEY = <span class="string">"_CAPTCHA_MD5_CODE_"</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 图片宽度</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> imgWidth;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 图片高度</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> imgHeight;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 随机生成字符数量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> imgRandNumber;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成的随机码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String randonCode;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * md5散列后的随机码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String md5RandonCode;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数,随机生成6个字符。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CaptchaRender</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(<span class="number">6</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> imgRandNumber 随机生成多少个字符,最少4个字符。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CaptchaRender</span><span class="params">(<span class="keyword">int</span> imgRandNumber)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(imgRandNumber &lt; <span class="number">4</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            imgRandNumber = <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.imgWidth = <span class="number">16</span>*imgRandNumber + <span class="number">12</span>;</span><br><span class="line">        <span class="keyword">this</span>.imgHeight = <span class="number">26</span>;</span><br><span class="line">        <span class="keyword">this</span>.imgRandNumber = imgRandNumber;</span><br><span class="line">        <span class="keyword">this</span>.randonCode = generateRandonCode();</span><br><span class="line">        <span class="keyword">this</span>.md5RandonCode = encrypt(randonCode);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取md5散列后的验证码，调用发需妥善保存此验证码。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> md5散列后的验证码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMd5RandonCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.md5RandonCode;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 依据字典生成随即码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 随机码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">generateRandonCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 生成随机类</span></span><br><span class="line">        Random random = <span class="keyword">new</span> Random();</span><br><span class="line">        String sRand = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; imgRandNumber; i++) &#123;</span><br><span class="line">            String rand = String.valueOf(strArr[random.nextInt(strArr.length)]);</span><br><span class="line">            sRand += rand;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sRand;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 渲染图片</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">render</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        BufferedImage image = <span class="keyword">new</span> BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_RGB);</span><br><span class="line">        drawGraphic(image);</span><br><span class="line">        response.setHeader(<span class="string">"Pragma"</span>,<span class="string">"no-cache"</span>);</span><br><span class="line">        response.setHeader(<span class="string">"Cache-Control"</span>,<span class="string">"no-cache"</span>);</span><br><span class="line">        response.setDateHeader(<span class="string">"Expires"</span>, <span class="number">0</span>);</span><br><span class="line">        response.setContentType(<span class="string">"image/jpeg"</span>);</span><br><span class="line">        ServletOutputStream sos = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            sos = response.getOutputStream();</span><br><span class="line">            ImageIO.write(image, <span class="string">"jpeg"</span>,sos);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (sos != <span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">try</span> &#123;sos.close();&#125; <span class="keyword">catch</span> (IOException e) &#123;e.printStackTrace();&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 绘制验证码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> image BufferedImage对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">drawGraphic</span><span class="params">(BufferedImage image)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 获取图形上下文</span></span><br><span class="line">        Graphics g = image.createGraphics();</span><br><span class="line">        <span class="comment">// 生成随机类</span></span><br><span class="line">        Random random = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="comment">// 设定背景色</span></span><br><span class="line">        g.setColor(getRandColor(<span class="number">200</span>, <span class="number">250</span>));</span><br><span class="line">        g.fillRect(<span class="number">0</span>, <span class="number">0</span>, imgWidth, imgHeight);</span><br><span class="line">        <span class="comment">// 设定字体</span></span><br><span class="line">        g.setFont(<span class="keyword">new</span> Font(<span class="string">"Times New Roman"</span>, Font.PLAIN, <span class="number">18</span>));</span><br><span class="line">        <span class="comment">// 随机产生155条干扰线，使图象中的认证码不易被其它程序探测到</span></span><br><span class="line">        g.setColor(getRandColor(<span class="number">160</span>, <span class="number">200</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">155</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = random.nextInt(imgWidth);</span><br><span class="line">            <span class="keyword">int</span> y = random.nextInt(imgHeight);</span><br><span class="line">            <span class="keyword">int</span> xl = random.nextInt(<span class="number">12</span>);</span><br><span class="line">            <span class="keyword">int</span> yl = random.nextInt(<span class="number">12</span>);</span><br><span class="line">            g.drawLine(x, y, x + xl, y + yl);</span><br><span class="line">        &#125;</span><br><span class="line">        g.setFont(<span class="keyword">new</span> Font(<span class="string">"TimesRoman"</span>, Font.PLAIN, <span class="number">20</span>));</span><br><span class="line">        <span class="comment">//取随机产生的认证码(img_randNumber位数字)</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; imgRandNumber; i++) &#123;</span><br><span class="line">            String rand = String.valueOf(<span class="keyword">this</span>.randonCode.charAt(i));</span><br><span class="line">            <span class="comment">// 将认证码显示到图象中</span></span><br><span class="line">            g.setColor(<span class="keyword">new</span> Color(<span class="number">20</span> + random.nextInt(<span class="number">110</span>), <span class="number">20</span> + random.nextInt(<span class="number">110</span>), <span class="number">20</span> + random.nextInt(<span class="number">110</span>)));</span><br><span class="line">            <span class="comment">// 调用函数出来的颜色相同，可能是因为种子太接近，所以只能直接生成</span></span><br><span class="line">            g.drawString(rand, <span class="number">16</span> * i + <span class="number">6</span>, <span class="number">21</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 图象生效</span></span><br><span class="line">        g.dispose();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成随机颜色</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fc</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bc</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 颜色对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Color <span class="title">getRandColor</span><span class="params">(<span class="keyword">int</span> fc, <span class="keyword">int</span> bc)</span> </span>&#123;</span><br><span class="line">        Random random = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">if</span> (fc &gt; <span class="number">255</span>)</span><br><span class="line">            fc = <span class="number">255</span>;</span><br><span class="line">        <span class="keyword">if</span> (bc &gt; <span class="number">255</span>)</span><br><span class="line">            bc = <span class="number">255</span>;</span><br><span class="line">        <span class="keyword">int</span> r = fc + random.nextInt(bc - fc);</span><br><span class="line">        <span class="keyword">int</span> g = fc + random.nextInt(bc - fc);</span><br><span class="line">        <span class="keyword">int</span> b = fc + random.nextInt(bc - fc);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Color(r, g, b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 使用md5散列字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> srcStr 输入的字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 加密后的字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String <span class="title">encrypt</span><span class="params">(String srcStr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String result = <span class="string">""</span>;</span><br><span class="line">            MessageDigest md = MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">            <span class="keyword">byte</span>[] bytes = md.digest(srcStr.getBytes(<span class="string">"utf-8"</span>));</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">byte</span> b:bytes)&#123;</span><br><span class="line">                String hex = Integer.toHexString(b&amp;<span class="number">0xFF</span>).toUpperCase();</span><br><span class="line">                result += ((hex.length() ==<span class="number">1</span> ) ? <span class="string">"0"</span> : <span class="string">""</span>) + hex;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证码检查</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> md5RandomCode  md5散列后的验证码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputRandomCode 用户输入的验证码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 若二者一致，返回true，否则返回false</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validate</span><span class="params">(String md5RandomCode, String inputRandomCode)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (StringKit.isBlank(md5RandomCode) || StringKit.isBlank(inputRandomCode))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            inputRandomCode = inputRandomCode.toUpperCase();</span><br><span class="line">            inputRandomCode = encrypt(inputRandomCode);</span><br><span class="line">            <span class="keyword">return</span> inputRandomCode.equals(md5RandomCode);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>action代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CaptchaRender img = <span class="keyword">new</span> CaptchaRender(<span class="number">4</span>); <span class="keyword">this</span>.setSessionAttr(CaptchaRender.DEFAULT_CAPTCHA_MD5_CODE_KEY, img.getMd5RandonCode());</span><br><span class="line">render(img);</span><br></pre></td></tr></table></figure>
+<p>页面代码，点击自动刷新：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="function">function <span class="title">refushcode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> d = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="comment">//为了避免服务器或者浏览器缓存，添加了一个额外的参数</span></span><br><span class="line">        document.getElementById(<span class="string">"safecode"</span>).src=<span class="string">"$&#123;BASE_PATH&#125;/au/img?t="</span>+d.toString(<span class="number">40</span>);</span><br><span class="line">    &#125;</span><br><span class="line">   &lt;/script&gt;</span><br><span class="line">&lt;img src=<span class="string">"$&#123;BASE_PATH&#125;/au/img"</span> alt=<span class="string">"点击刷新"</span> style=<span class="string">"padding-top: 7px;"</span> id=<span class="string">"safecode"</span> onclick=<span class="string">"refushcode();"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>验证action代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">String captchaCode = getPara(<span class="string">"captchaCode"</span>);</span><br><span class="line">        Object objMd5RandomCode = <span class="keyword">this</span>.getSessionAttr(CaptchaRender.DEFAULT_CAPTCHA_MD5_CODE_KEY);</span><br><span class="line"></span><br><span class="line">        String md5RandomCode = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (objMd5RandomCode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            md5RandomCode = objMd5RandomCode.toString();</span><br><span class="line">            <span class="keyword">this</span>.removeSessionAttr(CaptchaRender.DEFAULT_CAPTCHA_MD5_CODE_KEY);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!CaptchaRender.validate(md5RandomCode, captchaCode)) &#123;</span><br><span class="line">            <span class="keyword">this</span>.setFlash(<span class="string">"username"</span>, username);</span><br><span class="line">            <span class="keyword">this</span>.setFlash(<span class="string">"password"</span>, password);</span><br><span class="line">            <span class="keyword">this</span>.setFlash(<span class="string">"msg"</span>, <span class="string">"验证码错误，请输入正确的验证码"</span>);</span><br><span class="line">            redirect(ShiroKit.getLoginUrl());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>打完收工。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/alipay_get.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/wiki/sunlibincn/sunlibincn.github.imgBad/WX_get.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/23/spring的常用注解/" class="archive-article-date">
-  	<time datetime="2019-04-23T09:47:40.663Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/23/spring的常用注解/">spring 常用注解、xml配置标签</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2019/06/07/JFinal CaptchaRender图型验证码的又一个实现/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/图片验证码/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:22:22.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/07/一个简单的时间过期校验/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一个简单的时间过期校验</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/图片验证码/">图片验证码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/toString是如何被System.out.println调用的/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:20:17.599Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/toString是如何被System.out.println调用的/">toString是如何被System.out.println调用的</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/mysql 从单一的表中随机取n条数据/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:17:35.854Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/mysql 从单一的表中随机取n条数据/">mysql 从单一的表中随机取n条数据</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/equals 和 ==/" class="archive-article-date">
-  	<time datetime="2019-04-18T07:03:32.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/equals 和 ==/">equals 和 ==</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/输入流遇到的坑/" class="archive-article-date">
-  	<time datetime="2019-04-18T06:59:55.880Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/输入流遇到的坑/">输入流遇到的坑</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/日常开发小技巧-持续更新/" class="archive-article-date">
-  	<time datetime="2019-04-18T06:57:00.154Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/日常开发小技巧-持续更新/">日常开发小技巧-持续更新</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/并发和并行的概念/" class="archive-article-date">
-  	<time datetime="2019-04-18T06:46:27.383Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/并发和并行的概念/">并发和并行的概念 \ 进程和线程的概念以及联系</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -390,8 +348,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
