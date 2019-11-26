@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://sunlibincn.github.io">
-  <title>git速查表 | sunlibin.cn 的博客</title>
+  <title>Oracle创建表、删除表、修改表（添加字段、修改字段、删除字段）语句总结 | sunlibin.cn 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="搞一个git的速查表过来，备用。。。">
+  <meta name="description" content="创建表： 　　create table 表名 ( 　　　　字段名1 字段类型 默认值 是否为空 ， 　　　　字段名2 字段类型 默认值 是否为空， 　　　　字段名3 字段类型 默认值 是否为空， 　　　　…… 　　); 　　创建一个user表： 　　create table user ( 　　　　id number(6) primary key,   —主键 　　　　name varchar(50">
 <meta name="keywords" content="java,springboot,spring,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git速查表">
-<meta property="og:url" content="https://sunlibincn.github.io/2019/06/07/git速查表/index.html">
+<meta property="og:title" content="Oracle创建表、删除表、修改表（添加字段、修改字段、删除字段）语句总结">
+<meta property="og:url" content="https://sunlibincn.github.io/2019/11/21/Oracle创建表、删除表、修改表（添加字段、修改字段、删除字段）语句总结/index.html">
 <meta property="og:site_name" content="sunlibin.cn 的博客">
-<meta property="og:description" content="搞一个git的速查表过来，备用。。。">
+<meta property="og:description" content="创建表： 　　create table 表名 ( 　　　　字段名1 字段类型 默认值 是否为空 ， 　　　　字段名2 字段类型 默认值 是否为空， 　　　　字段名3 字段类型 默认值 是否为空， 　　　　…… 　　); 　　创建一个user表： 　　create table user ( 　　　　id number(6) primary key,   —主键 　　　　name varchar(50">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://psgsn6ti0.bkt.clouddn.com/git_fast_query.jpg">
-<meta property="og:updated_time" content="2019-09-04T05:55:06.989Z">
+<meta property="og:updated_time" content="2019-11-21T09:41:51.104Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git速查表">
-<meta name="twitter:description" content="搞一个git的速查表过来，备用。。。">
-<meta name="twitter:image" content="http://psgsn6ti0.bkt.clouddn.com/git_fast_query.jpg">
+<meta name="twitter:title" content="Oracle创建表、删除表、修改表（添加字段、修改字段、删除字段）语句总结">
+<meta name="twitter:description" content="创建表： 　　create table 表名 ( 　　　　字段名1 字段类型 默认值 是否为空 ， 　　　　字段名2 字段类型 默认值 是否为空， 　　　　字段名3 字段类型 默认值 是否为空， 　　　　…… 　　); 　　创建一个user表： 　　create table user ( 　　　　id number(6) primary key,   —主键 　　　　name varchar(50">
   
     <link rel="alternative" href="/atom.xml" title="sunlibin.cn 的博客" type="application/atom+xml">
   
@@ -139,28 +137,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git速查表" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-Oracle创建表、删除表、修改表（添加字段、修改字段、删除字段）语句总结" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      git速查表
+      Oracle创建表、删除表、修改表（添加字段、修改字段、删除字段）语句总结
     </h1>
   
 
         
-        <a href="/2019/06/07/git速查表/" class="archive-article-date">
-  	<time datetime="2019-06-07T14:29:41.127Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-07</time>
+        <a href="/2019/11/21/Oracle创建表、删除表、修改表（添加字段、修改字段、删除字段）语句总结/" class="archive-article-date">
+  	<time datetime="2019-11-21T09:40:53.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>搞一个git的速查表过来，备用。。。</p>
-<p><img src="http://psgsn6ti0.bkt.clouddn.com/git_fast_query.jpg" alt="git速查"></p>
+        <p><strong>创建表：</strong></p>
+<p>　　create table 表名 (</p>
+<p>　　　　字段名1 字段类型 默认值 是否为空 ，</p>
+<p>　　　　字段名2 字段类型 默认值 是否为空，</p>
+<p>　　　　字段名3 字段类型 默认值 是否为空，</p>
+<p>　　　　……</p>
+<p>　　);</p>
+<p>　　创建一个user表：</p>
+<p>　　create table user (</p>
+<p>　　　　id number(6) primary key,   —主键</p>
+<p>　　　　name varchar(50) not null,   —姓名 不为null</p>
+<p>　　　　sex varchar2(6) default ‘男’ check ( sex in (‘男’,’女’))   —性别 默认’男’</p>
+<p>　　);</p>
+<p><strong>修改表名：</strong></p>
+<p>　　rename 旧表名 to 新表名；</p>
+<p>　　rename user to newuser;</p>
+<p><strong>删除表：</strong></p>
+<p>　　delete from 表名；</p>
+<p>　　delete删除数据是一条一条的删除数据，后面可以添加where条件，不删除表结构。注意：如果表中有identity产生的自增id列，delete from后仍然从上次的数开始增加。</p>
+<p>　　truncate table 表名；</p>
+<p>　　truncate是一次性删掉所有数据，不删除表结构。注意：如果表中有identity产生的自增id列，truncate后，会恢复初始值。</p>
+<p>　　drop table 表名；</p>
+<p>　　drop删除所有数据，会删除表结构。</p>
+<p><strong>修改表：</strong></p>
+<p>　　<strong>添加新字段：</strong></p>
+<p>　　alter table 表名 add(字段名 字段类型 默认值 是否为空);</p>
+<p>　　alter table user add(age number(6));</p>
+<p>　　alter table user add (course varchar2(30) default ‘空’ not null);</p>
+<p>　　<strong>修改字段：</strong></p>
+<p>　　alter table 表名 modify (字段名 字段类型 默认值 是否为空);</p>
+<p>　　alter table user modify((age number(8));</p>
+<p>　　<strong>修改字段名：</strong></p>
+<p>　　alter table 表名 rename  column  列名 to 新列名;</p>
+<p>　　alter table user rename column course to newcourse;</p>
+<p>　　<strong>删除字段：</strong></p>
+<p>　　alter table 表名 drop column 字段名；</p>
+<p>　　alter table user drop column course;</p>
 
       
 
@@ -250,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2019/06/07/git速查表/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://sunlibincn.github.io/2019/11/21/Oracle创建表、删除表、修改表（添加字段、修改字段、删除字段）语句总结/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -264,18 +297,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/07/图片 base64 加密、解码/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/26/ORACLE关于scott用户下相关表的sql练习/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          图片 base64 加密、解码
+          ORACLE关于scott用户下相关表的sql练习
         
       </div>
     </a>
   
   
-    <a href="/2019/04/23/spring的常用注解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">spring 常用注解、xml配置标签</div>
+    <a href="/2019/07/30/Intellij IDEA 常用快捷键/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Intellij IDEA 常用快捷键</div>
       <i class="icon-circle-right"></i>
     </a>
   
